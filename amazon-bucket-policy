@@ -1,0 +1,23 @@
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "Give access if referer is my site",
+      "Effect": "Allow",
+      "Principal": {
+        "AWS": "*"
+      },
+      "Action": "s3:GetObject",
+      "Resource": "arn:aws:s3:::www.trif.it/*",
+      "Condition": {
+        "StringLike": {
+          "aws:Referer": [
+            "http://www.trif.it/*",
+            "http://trif.it/*",
+            "http://trif.it.s3-website-ap-southeast-1.amazonaws.com/*"
+          ]
+        }
+      }
+    }
+  ]
+}
