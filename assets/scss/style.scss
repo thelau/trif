@@ -1,17 +1,15 @@
-@import url(http://fonts.googleapis.com/css?family=Lato:300,700);
+@import url(http://fonts.googleapis.com/css?family=Lato:700);
 
-// XXX: Using a variable because REM is not applying changes dynamically to
-// the sizes in the subsequent elements
+// XXX: Using a variable because REM is not applying changes dynamically to the sizes in the subsequent elements
 $basicUnitSize: 1.75vmax;
 
 html {
   background: black;
-  height: 100%;
 }
 
 body {
   color: white;
-  font-family: "Lato", helvetica, verdana, sans-serif;
+  font-family: "Lato", "C64 Pro Mono Local", helvetica, verdana, sans-serif;
   font-weight: 700;
   font-size: $basicUnitSize;
   letter-spacing: 2px;
@@ -37,6 +35,23 @@ a:hover {
 
 // Effects
 
+$defaultFilter: contrast(1.75) grayscale(100%);
+$defaultColorFilter: contrast(1.75) hue-rotate(22.5deg) saturate(200%);
+$defaultAltFilter: $defaultFilter invert(100%);
+$defaultAltColorFilter: $defaultColorFilter invert(100%);
+$technoFilter: $defaultFilter;
+$technoColorFilter: $defaultColorFilter;
+$technoAltFilter: $defaultAltFilter;
+$technoAltColorFilter: $defaultAltColorFilter;
+$dubstepFilter: $defaultFilter;
+$dubstepColorFilter: $defaultColorFilter;
+$dubstepAltFilter: $defaultAltFilter;
+$dubstepAltColorFilter: $defaultAltColorFilter;
+$tranceFilter: $defaultFilter;
+$tranceColorFilter: $defaultColorFilter;
+$tranceAltFilter: $defaultAltFilter;
+$tranceAltColorFilter: $defaultAltColorFilter;
+
 #visuals {
   background-attachment: fixed;
   background-position: center center;
@@ -52,21 +67,20 @@ a:hover {
   width: 100vw;
   z-index: 0;
   .scanlines {
-    //display: none;
-    $lineSize: 1px;
+    $lineSize: 2px;
     background: -webkit-repeating-linear-gradient(
       top,
       transparent 0px,
       transparent $lineSize,
-      rgba(0, 0, 0, 0.1) $lineSize,
-      rgba(0, 0, 0, 0.1) $lineSize * 2
+      rgba(0, 0, 0, 0.15) $lineSize,
+      rgba(0, 0, 0, 0.15) $lineSize * 2
     );
     background: -moz-repeating-linear-gradient(
       top,
       transparent 0px,
       transparent $lineSize,
-      rgba(0, 0, 0, 0.1) $lineSize,
-      rgba(0, 0, 0, 0.1) $lineSize * 2
+      rgba(0, 0, 0, 0.15) $lineSize,
+      rgba(0, 0, 0, 0.15) $lineSize * 2
     );
     -webkit-background-size: 100% $lineSize * 2;
     -moz-background-size: 100% $lineSize * 2;
@@ -79,100 +93,83 @@ a:hover {
     width: 100%;
     z-index: 1;
   }
-  .overlay {
-    bottom: 0;
-    color: white;
-    display: none;
-    font-weight: 700;
-    left: 0;
-    overflow: hidden;
-    position: absolute;
-    right: 0;
-    text-transform: uppercase;
-    top: 0;
-    z-index: 2;
-    p {
-      box-model: border-box;
-      left: 0;
-      padding: 0 2 * $basicUnitSize;
-      position: absolute;
-      right: 0;
-      top: 25%;
-      a {
-        text-decoration: underline;
-      }
-    }
-  }
-  #incompatible-mobile,
-  #incompatible-desktop {
-    background: rgba(black, 0.5);
-    z-index: 2;
-  }
-  #loading {
-    background: black;
-    z-index: 3;
-  }
 }
 
-$defaultFilter: contrast(1.5) grayscale(100%);
-$defaultColorFilter: contrast(1.5) hue-rotate(22.5deg) saturate(200%);
-$defaultAltFilter: $defaultFilter invert(100%);
-$defaultAltColorFilter: $defaultColorFilter invert(100%);
-
-html.incompatible #visuals {
-  background-image: url("../gifs/vintage-club.gif");
-  -webkit-filter: $defaultFilter!important;
-  filter: $defaultFilter!important;
+.techno {
+  -webkit-filter: $technoFilter!important;
+  filter: $technoFilter!important;
 }
 
-.default {
-  -webkit-filter: $defaultFilter!important;
-  filter: $defaultFilter!important;
+.techno-color {
+  -webkit-filter: $technoColorFilter!important;
+  filter: $technoColorFilter!important;
 }
 
-.default-color {
-  -webkit-filter: $defaultColorFilter!important;
-  filter: $defaultColorFilter!important;
+.techno-alt {
+  -webkit-filter: $technoAltFilter!important;
+  filter: $technoAltFilter!important;
 }
 
-.default-alt {
-  -webkit-filter: $defaultAltFilter!important;
-  filter: $defaultAltFilter!important;
+.techno-alt-color {
+  -webkit-filter: $technoAltColorFilter!important;
+  filter: $technoAltColorFilter!important;
 }
 
-.default-alt-color {
-  -webkit-filter: $defaultAltColorFilter!important;
-  filter: $defaultAltColorFilter!important;
+.dubstep {
+  -webkit-filter: $dubstepFilter!important;
+  filter: $dubstepFilter!important;
 }
 
-div#branding {
+.dubstep-color {
+  -webkit-filter: $dubstepColorFilter!important;
+  filter: $dubstepColorFilter!important;
+}
+
+.dubstep-alt {
+  -webkit-filter: $dubstepAltFilter!important;
+  filter: $dubstepAltFilter!important;
+}
+
+.dubstep-alt-color {
+  -webkit-filter: $dubstepAltColorFilter!important;
+  filter: $dubstepAltColorFilter!important;
+}
+
+.trance {
+  -webkit-filter: $tranceFilter!important;
+  filter: $tranceFilter!important;
+}
+
+.trance-color {
+  -webkit-filter: $tranceColorFilter!important;
+  filter: $tranceColorFilter!important;
+}
+
+.trance-alt {
+  -webkit-filter: $tranceAltFilter!important;
+  filter: $tranceAltFilter!important;
+}
+
+.trance-alt-color {
+  -webkit-filter: $tranceAltColorFilter!important;
+  filter: $tranceAltColorFilter!important;
+}
+
+p#branding {
+  background-color: rgba(black, 0.15);
+  border: 0.2 * $basicUnitSize solid white;
   bottom: 3 * $basicUnitSize;
+  box-sizing: border-box;
+  color: white;
   height: 2 * $basicUnitSize;
+  line-height: 1.6 * $basicUnitSize;
+  margin: 0;
   overflow: hidden;
   position: absolute;
   left: 2 * $basicUnitSize;
+  text-align: center;
   width: 4 * $basicUnitSize;
   z-index: 4;
-  a.logo {
-    background-color: rgba(black, 0.15);
-    background-image: url(../images/logo.svg);
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: auto 0.8 * $basicUnitSize;
-    border: 0.2 * $basicUnitSize solid white;
-    box-sizing: border-box;
-    color: white;
-    height: 2 * $basicUnitSize;
-    line-height: 1.6 * $basicUnitSize;
-    margin: 0;
-    overflow: hidden;
-    position: absolute;
-    left: 0;
-    text-align: center;
-    text-indent: -1000 * $basicUnitSize;
-    top: 0;
-    width: 4 * $basicUnitSize;
-  }
 }
 
 p#controls {
@@ -183,7 +180,7 @@ p#controls {
   overflow: hidden;
   position: absolute;
   right: 2 * $basicUnitSize;
-  z-index: 4;
+  z-index: 3;
   a {
     bottom: 0;
     line-height: 2 * $basicUnitSize;
@@ -198,13 +195,19 @@ p#controls {
     background-size: 50% 50%;
     border: 0.2 * $basicUnitSize solid white;
     box-sizing: border-box;
-    width: 2 * $basicUnitSize;
+    width: 2 * $basicUnitSize!important;
   }
   a#play-pause {
     left: 0;
   }
+  a#play-pause[data-state='paused'] {
+    background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/152714/play-white.svg);
+  }
+  a#play-pause[data-state='playing'] {
+    background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/152714/pause-white.svg);
+  }
   a#next {
-    background-image: url(../images/next-white.svg);
+    background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/152714/next-white.svg);
     left: 3 * $basicUnitSize;
   }
   a#now-playing {
@@ -215,55 +218,16 @@ p#controls {
     text-transform: uppercase;
     white-space: nowrap;
   }
-  a#fullscreen {
+  a#full-screen {
     right: 0;
   }
   // XXX: Temporary code - :fullscreen and cross browser syntax didn't work
   // for whichever reason
-  a#fullscreen[data-state='not-fullscreen'] {
-    background-image: url(../images/enter-fullscreen-white.svg);
+  a#full-screen[data-state='not-full-screen'] {
+    background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/152714/enter-full-screen-white.svg);
   }
-  a#fullscreen[data-state='fullscreen'] {
-    background-image: url(../images/exit-fullscreen-white.svg);
-  }
-}
-
-html.incompatible p#controls {
-  display: none;
-}
-
-p#controls[data-state='loading'],
-p#controls[data-state='stalled'] {
-  a#play-pause {
-    background-image: url(../images/loader-white.svg);
-  }
-  a#now-playing {
-    -webkit-animation: blink 1.5s step-end infinite;
-    animation: blink 1.5s step-end infinite;
-  }
-}
-
-p#controls[data-state='paused'] {
-  a#play-pause {
-    background-image: url(../images/play-white.svg);
-  }
-  /*a#now-playing {
-    -webkit-animation: blink 1.5s step-end infinite;
-    animation: blink 1.5s step-end infinite;
-  }*/
-}
-
-p#controls[data-state='playing'] {
-  a#play-pause {
-    background-image: url(../images/pause-white.svg);
-  }
-}
-
-body[data-state='microphone'] {
-  a#play-pause,
-  a#next,
-  a#now-playing {
-    display: none;
+  a#full-screen[data-state='full-screen'] {
+    background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/152714/exit-full-screen-white.svg);
   }
 }
 
@@ -282,41 +246,11 @@ p#about {
   position: absolute;
   right: 0;
   text-transform: uppercase;
-  z-index: 4;
+  z-index: 3;
 
   a {
     color: white;
     text-decoration: underline;
-  }
-}
-
-@-webkit-keyframes blink {
-  0% {
-    opacity: 0;
-  }
-  25% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0;
-  }
-  75% {
-    opacity: 1;
-  }
-}
-
-@keyframes blink {
-  0% {
-    opacity: 0;
-  }
-  25% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0;
-  }
-  75% {
-    opacity: 1;
   }
 }
 
@@ -329,26 +263,20 @@ p#about {
   }
 
   #visuals {
-    bottom: 3 * $basicUnitSize;
+    bottom: 4 * $basicUnitSize;
   }
 
-  div#branding {
-    bottom: 4 * $basicUnitSize;
+  p#branding {
+    border: 0.2 * $basicUnitSize solid white;
+    bottom: 5 * $basicUnitSize;
     height: 2 * $basicUnitSize;
     line-height: 1.6 * $basicUnitSize;
     left: 2 * $basicUnitSize;
     width: 4 * $basicUnitSize;
-    a.logo {
-      background-size: auto 0.8 * $basicUnitSize;
-      border: 0.2 * $basicUnitSize solid white;
-      height: 2 * $basicUnitSize;
-      line-height: 1.6 * $basicUnitSize;
-      width: 4 * $basicUnitSize;
-    }
   }
 
   p#controls {
-    bottom: 4 * $basicUnitSize;
+    bottom: 5 * $basicUnitSize;
     height: auto;
     left: 7 * $basicUnitSize;
     right: 2 * $basicUnitSize;
@@ -361,7 +289,7 @@ p#about {
     a.button {
       bottom: 0;
       border: 0.2 * $basicUnitSize solid white;
-      width: 2 * $basicUnitSize;
+      width: 2 * $basicUnitSize!important;
     }
     a#next {
       left: 3 * $basicUnitSize;
@@ -370,7 +298,7 @@ p#about {
       left: 6 * $basicUnitSize;
       right: 0;
     }
-    a#fullscreen {
+    a#full-screen {
       bottom: none; // XXX: Not sure how to cancel the bottom 0 from non media query
       right: 0;
       top: 0;
@@ -381,531 +309,165 @@ p#about {
     bottom: 0;
     font-size: 0.35 * $basicUnitSize;
     line-height: 1 * $basicUnitSize;
-    height: 1 * $basicUnitSize;
+    height: 2 * $basicUnitSize;
     padding: 1 * $basicUnitSize 2 * $basicUnitSize;
   }
-
-  .landscape-only {
-    display: none;
-  }
-}
-
-// When full screen
-
-// XXX: For whatever reason we need to say html is 100% height
-
-html:-webkit-full-screen  {
-  height: 100%;
-}
-html:-moz-full-screen  {
-    height: 100%;
-}
-html:-ms-fullscreen  {
-    height: 100%;
-}
-html:full-screen  {
-    height: 100%;
-}
-html:fullscreen  {
-    height: 100%;
-}
-
-:-webkit-full-screen #visuals {
-  bottom: 0;
-}
-:-moz-full-screen #visuals {
-  bottom: 0;
-}
-:-ms-fullscreen #visuals {
-  bottom: 0;
-}
-:full-screen #visuals {
-  bottom: 0;
-}
-:fullscreen #visuals {
-  bottom: 0;
-}
-
-:-webkit-full-screen div#branding {
-  bottom: 1.5 * $basicUnitSize;
-}
-:-moz-full-screen div#branding {
-  bottom: 1.5 * $basicUnitSize;
-}
-:-ms-fullscreen div#branding {
-  bottom: 1.5 * $basicUnitSize;
-}
-:full-screen div#branding {
-  bottom: 1.5 * $basicUnitSize;
-}
-:fullscreen div#branding {
-  bottom: 1.5 * $basicUnitSize;
-}
-
-:-webkit-full-screen p#controls {
-  bottom: 1.5 * $basicUnitSize;
-}
-:-moz-full-screen p#controls {
-  bottom: 1.5 * $basicUnitSize;
-}
-:-ms-fullscreen p#controls {
-  bottom: 1.5 * $basicUnitSize;
-}
-:full-screen p#controls {
-  bottom: 1.5 * $basicUnitSize;
-}
-:fullscreen p#controls {
-  bottom: 1.5 * $basicUnitSize;
-}
-
-:-webkit-full-screen p#about {
-  display: none;
-}
-:-moz-full-screen p#about {
-  display: none;
-}
-:-ms-fullscreen p#about {
-  display: none;
-}
-:full-screen p#about {
-  display: none;
-}
-:fullscreen p#about {
-  display: none;
 }
 
 // GIFs
 
+.gif-walking-mickey {
+  background: url("https://s3-ap-southeast-1.amazonaws.com/gif-music-television/gif/walking-mickey.gif");
+}
+
 .gif-elephant {
-  background: url("../gifs/elephant.gif");
+  background: url("https://s3-ap-southeast-1.amazonaws.com/gif-music-television/gif/elephant.gif");
+}
+
+.gif-road {
+  background: url("https://s3-ap-southeast-1.amazonaws.com/gif-music-television/gif/road.gif");
 }
 
 .gif-wind {
-  background: url("../gifs/wind.gif");
+  background: url("https://s3-ap-southeast-1.amazonaws.com/gif-music-television/gif/wind.gif");
+}
+
+.gif-squares {
+  background: url("https://s3-ap-southeast-1.amazonaws.com/gif-music-television/gif/squares.gif");
 }
 
 .gif-base-jumping {
-  background: url("../gifs/base-jumping.gif");
+  background: url("https://s3-ap-southeast-1.amazonaws.com/gif-music-television/gif/base-jumping.gif");
+}
+
+.gif-electronic-heart {
+  background: url("https://s3-ap-southeast-1.amazonaws.com/gif-music-television/gif/electronic-heart.gif");
+}
+
+.gif-cube {
+  background: url("https://s3-ap-southeast-1.amazonaws.com/gif-music-television/gif/cube.gif");
+}
+
+.gif-3d-circle {
+  background: url("https://s3-ap-southeast-1.amazonaws.com/gif-music-television/gif/3d-circle.gif");
 }
 
 .gif-rotating-elements {
-  background: url("../gifs/rotating-elements.gif");
+  background: url("https://s3-ap-southeast-1.amazonaws.com/gif-music-television/gif/rotating-elements.gif");
 }
 
 .gif-jennifer-lopez {
-  background: url("../gifs/jennifer-lopez.gif");
+  background: url("https://s3-ap-southeast-1.amazonaws.com/gif-music-television/gif/jennifer-lopez.gif");
+}
+
+.gif-breakdancer {
+  background: url("https://s3-ap-southeast-1.amazonaws.com/gif-music-television/gif/breakdancer.gif");
 }
 
 .gif-simpsons {
-  background: url("../gifs/simpsons.gif");
+  background: url("https://s3-ap-southeast-1.amazonaws.com/gif-music-television/gif/simpsons.gif");
 }
 
 .gif-sperm {
-  background-image: url("../gifs/sperm.gif");
+  background-image: url("https://s3-ap-southeast-1.amazonaws.com/gif-music-television/gif/sperm.gif");
+}
+
+.gif-heart {
+  background-image: url("https://s3-ap-southeast-1.amazonaws.com/gif-music-television/gif/heart.gif");
 }
 
 .gif-zebra {
-  background-image: url("../gifs/zebra.gif");
+  background-image: url("https://s3-ap-southeast-1.amazonaws.com/gif-music-television/gif/zebra.gif");
+}
+
+.gif-3d-mirrors {
+  background-image: url("https://s3-ap-southeast-1.amazonaws.com/gif-music-television/gif/3d-mirrors.gif");
+}
+
+.gif-bmx {
+  background-image: url("https://s3-ap-southeast-1.amazonaws.com/gif-music-television/gif/bmx.gif");
+}
+
+.gif-3d-triangles {
+  background-image: url("https://s3-ap-southeast-1.amazonaws.com/gif-music-television/gif/3d-triangles.gif");
 }
 
 .gif-run {
-  background-image: url("../gifs/run.gif");
+  background-image: url("https://s3-ap-southeast-1.amazonaws.com/gif-music-television/gif/run.gif");
+}
+
+.gif-kidmograph-2 {
+  background-image: url("https://s3-ap-southeast-1.amazonaws.com/gif-music-television/gif/kidmograph-2.gif");
+}
+
+.gif-reagan {
+  background-image: url("https://s3-ap-southeast-1.amazonaws.com/gif-music-television/gif/reagan.gif");
+}
+
+.gif-kidmograph {
+  background-image: url("https://s3-ap-southeast-1.amazonaws.com/gif-music-television/gif/kidmograph.gif");
+}
+
+.gif-crossing-eyes {
+  background-image: url("https://s3-ap-southeast-1.amazonaws.com/gif-music-television/gif/crossing-eyes.gif");
 }
 
 .gif-biology {
-  background-image: url("../gifs/biology.gif");
+  background-image: url("https://s3-ap-southeast-1.amazonaws.com/gif-music-television/gif/biology.gif");
+}
+
+.gif-urchin {
+  background-image: url("https://s3-ap-southeast-1.amazonaws.com/gif-music-television/gif/urchin.gif");
+}
+
+.gif-human-body {
+  background-image: url("https://s3-ap-southeast-1.amazonaws.com/gif-music-television/gif/human-body.gif");
+}
+
+.gif-random-shapes {
+  background-image: url("https://s3-ap-southeast-1.amazonaws.com/gif-music-television/gif/random-shapes.gif");
+}
+
+.gif-shapes-tunnel {
+  background-image: url("https://s3-ap-southeast-1.amazonaws.com/gif-music-television/gif/shapes-tunnel.gif");
+}
+
+.gif-cubes {
+  background-image: url("https://s3-ap-southeast-1.amazonaws.com/gif-music-television/gif/cubes.gif");
+}
+
+.gif-dolphins {
+  background-image: url("https://s3-ap-southeast-1.amazonaws.com/gif-music-television/gif/dolphins.gif");
 }
 
 .gif-laser {
-  background-image: url("../gifs/laser.gif");
+  background-image: url("https://s3-ap-southeast-1.amazonaws.com/gif-music-television/gif/laser.gif");
+}
+
+.gif-flashing-wall {
+  background-image: url("https://s3-ap-southeast-1.amazonaws.com/gif-music-television/gif/flashing-wall.gif");
+}
+
+.gif-abstract-geometry {
+  background-image: url("https://s3-ap-southeast-1.amazonaws.com/gif-music-television/gif/abstract-geometry.gif");
+}
+
+.gif-abstract-art-loop {
+  background-image: url("https://s3-ap-southeast-1.amazonaws.com/gif-music-television/gif/abstract-art-loop.gif");
+}
+
+.gif-small-abstract-rectangles {
+  background-image: url("https://s3-ap-southeast-1.amazonaws.com/gif-music-television/gif/small-abstract-rectangles.gif");
 }
 
 .gif-trippy-abstract {
-  background-image: url("../gifs/trippy-abstract.gif");
+  background-image: url("https://s3-ap-southeast-1.amazonaws.com/gif-music-television/gif/trippy-abstract.gif");
 }
 
 .gif-abstract-rainbow-3 {
-  background-image: url("../gifs/abstract-rainbow-3.gif");
+  background-image: url("https://s3-ap-southeast-1.amazonaws.com/gif-music-television/gif/abstract-rainbow-3.gif");
 }
 
 .gif-abstract-rainbow-4 {
-  background-image: url("../gifs/abstract-rainbow-4.gif");
-}
-
-.gif-kidmograph-3 {
-  background-image: url("../gifs/kidmograph-3.gif");
-}
-
-.gif-psychedelic-kaleidoscope-2 {
-  background-image: url("../gifs/psychedelic-kaleidoscope-2.gif");
-}
-
-.gif-psychedelic-kaleidoscope {
-  background-image: url("../gifs/psychedelic-kaleidoscope.gif");
-}
-
-.gif-psychedelic-cat {
-  background-image: url("../gifs/psychedelic-cat.gif");
-}
-
-.gif-los-angeles {
-  background-image: url("../gifs/los-angeles.gif");
-}
-
-.gif-infinite-room {
-  background-image: url("../gifs/infinite-room.gif");
-}
-
-.gif-physchedelic-forest {
-  background-image: url("../gifs/physchedelic-forest.gif");
-}
-
-.gif-flashing-colors {
-  background-image: url("../gifs/flashing-colors.gif");
-}
-
-.gif-beyonce-2 {
-  background-image: url("../gifs/beyonce-2.gif");
-}
-
-.gif-night-train {
-  background-image: url("../gifs/night-train.gif");
-}
-
-.gif-vintage-eye {
-  background-image: url("../gifs/vintage-eye.gif");
-}
-
-.gif-vintage-face {
-  background-image: url("../gifs/vintage-face.gif");
-}
-
-.gif-infinite-dance {
-  background-image: url("../gifs/infinite-dance.gif");
-}
-
-.gif-underwater-woman {
-  background-image: url("../gifs/underwater-woman.gif");
-}
-
-.gif-urban-dancer {
-  background-image: url("../gifs/urban-dancer.gif");
-}
-
-.gif-psychedelic-clouds {
-  background-image: url("../gifs/psychedelic-clouds.gif");
-}
-
-.gif-walking-robot {
-  background-image: url("../gifs/walking-robot.gif");
-}
-
-.gif-vintage-club {
-  background-image: url("../gifs/vintage-club.gif");
-}
-
-.gif-nicky-minaj {
-  background-image: url("../gifs/nicky-minaj.gif");
-}
-
-.gif-beyonce-3 {
-  background-image: url("../gifs/beyonce-3.gif");
-}
-
-.gif-ian-curtis {
-  background-image: url("../gifs/ian-curtis.gif");
-}
-
-.gif-pasto-2 {
-  background-image: url("../gifs/pasto-2.gif");
-}
-
-.gif-pasto-5 {
-  background-image: url("../gifs/pasto-5.gif");
-}
-
-.gif-pasto-7 {
-  background-image: url("../gifs/pasto-7.gif");
-}
-
-.gif-pasto-gas {
-  background-image: url("../gifs/pasto-gas.gif");
-}
-
-.gif-face-glitch {
-  background-image: url("../gifs/face-glitch.gif");
-}
-
-.gif-wave {
-  background-image: url("../gifs/wave.gif");
-}
-
-.gif-hypnotic-springs {
-  background-image: url("../gifs/hypnotic-springs.gif");
-}
-
-.gif-morphing {
-  background-image: url("../gifs/morphing.gif");
-}
-
-.gif-glitch-loop {
-  background-image: url("../gifs/glitch-loop.gif");
-}
-
-.gif-marine-life {
-  background-image: url("../gifs/marine-life.gif");
-}
-
-.gif-1980s-cgi {
-  background-image: url("../gifs/1980s-cgi.gif");
-}
-
-.gif-1980s-lips-incredible {
-  background-image: url("../gifs/1980s-lips-incredible.gif");
-}
-
-.gif-psychedelic-flowers {
-  background-image: url("../gifs/psychedelic-flowers.gif");
-}
-
-.gif-zillion-electron-volts {
-  background-image: url("../gifs/zillion-electron-volts.gif");
-}
-
-.gif-endless-psychedelic-texture {
-  background-image: url("../gifs/endless-psychedelic-texture.gif");
-}
-
-.gif-structure-with-peaks {
-  background-image: url("../gifs/structure-with-peaks.gif");
-}
-
-.gif-endless-psychedelic-kaleidoscope {
-  background-image: url("../gifs/endless-psychedelic-kaleidoscope.gif");
-}
-
-.gif-water-colour {
-  background-image: url("../gifs/water-colour.gif");
-}
-
-// Women's day gifs
-
-.gif-pasto-gas-wd {
-  background-image: url("../gifs/women-day/pasto-gas-wd.gif");
-}
-
-.gif-1930s-woman {
-  background-image: url("../gifs/women-day/1930s-woman.gif");
-}
-
-.gif-1940s-woman {
-  background-image: url("../gifs/women-day/1940s-woman.gif");
-}
-
-.gif-asian-woman-1 {
-  background-image: url("../gifs/women-day/asian-woman-1.gif");
-}
-
-.gif-audrey-tautou-2 {
-  background-image: url("../gifs/women-day/audrey-tautou-2.gif");
-}
-
-.gif-beyonce-5 {
-  background-image: url("../gifs/women-day/beyonce-5.gif");
-}
-
-.gif-audrey-tautou-2 {
-  background-image: url("../gifs/women-day/audrey-tautou-2.gif");
-}
-
-.gif-demi-lovato {
-  background-image: url("../gifs/women-day/demi-lovato.gif");
-}
-
-.gif-destinys-child {
-  background-image: url("../gifs/women-day/destinys-child.gif");
-}
-
-.gif-emma-stone-1 {
-  background-image: url("../gifs/women-day/emma-stone-1.gif");
-}
-
-.gif-fashion-1 {
-  background-image: url("../gifs/women-day/fashion-1.gif");
-}
-
-.gif-fashion-3 {
-  background-image: url("../gifs/women-day/fashion-3.gif");
-}
-
-.gif-fashion-5 {
-  background-image: url("../gifs/women-day/fashion-5.gif");
-}
-
-.gif-fashion-7 {
-  background-image: url("../gifs/women-day/fashion-7.gif");
-}
-
-.gif-fashion-8 {
-  background-image: url("../gifs/women-day/fashion-8.gif");
-}
-
-.gif-frequency-waves {
-  background-image: url("../gifs/women-day/frequency-waves.gif");
-}
-
-.gif-friendship {
-  background-image: url("../gifs/women-day/friendship.gif");
-}
-
-.gif-glitch-80s {
-  background-image: url("../gifs/women-day/glitch-80s.gif");
-}
-
-.gif-grace-kelly-1 {
-  background-image: url("../gifs/women-day/grace-kelly-1.gif");
-}
-
-.gif-illusion-1 {
-  background-image: url("../gifs/women-day/illusion-1.gif");
-}
-
-.gif-indonesia {
-  background-image: url("../gifs/women-day/indonesia.gif");
-}
-
-.gif-janelle-monae-2 {
-  background-image: url("../gifs/women-day/janelle-monae-2.gif");
-}
-
-.gif-janelle-monae {
-  background-image: url("../gifs/women-day/janelle-monae.gif");
-}
-
-.gif-judy-garland-1 {
-  background-image: url("../gifs/women-day/judy-garland-1.gif");
-}
-
-.gif-kaleidoscope {
-  background-image: url("../gifs/women-day/kaleidoscope.gif");
-}
-
-.gif-kate-moss {
-  background-image: url("../gifs/women-day/kate-moss.gif");
-}
-
-.gif-kristen-dunst {
-  background-image: url("../gifs/women-day/kristen-dunst.gif");
-}
-
-.gif-lady-gaga-7 {
-  background-image: url("../gifs/women-day/lady-gaga-7.gif");
-}
-
-.gif-lady-gaga-9 {
-  background-image: url("../gifs/women-day/lady-gaga-9.gif");
-}
-
-.gif-lady-gaga-10 {
-  background-image: url("../gifs/women-day/lady-gaga-10.gif");
-}
-
-.gif-lady-gaga-11 {
-  background-image: url("../gifs/women-day/lady-gaga-11.gif");
-}
-
-.gif-lady-gaga-12 {
-  background-image: url("../gifs/women-day/lady-gaga-12.gif");
-}
-
-.gif-lips {
-  background-image: url("../gifs/women-day/lips.gif");
-}
-
-.gif-madonna-3 {
-  background-image: url("../gifs/women-day/madonna-3.gif");
-}
-
-.gif-makeup {
-  background-image: url("../gifs/women-day/makeup.gif");
-}
-
-.gif-monica-bellucci-4 {
-  background-image: url("../gifs/women-day/monica-bellucci-4.gif");
-}
-
-.gif-nail-art {
-  background-image: url("../gifs/women-day/nail-art.gif");
-}
-
-.gif-natalie-portman-2 {
-  background-image: url("../gifs/women-day/natalie-portman-2.gif");
-}
-
-.gif-natalie-portman-4 {
-  background-image: url("../gifs/women-day/natalie-portman-4.gif");
-}
-
-.gif-nicki-minaj-1 {
-  background-image: url("../gifs/women-day/nicki-minaj-1.gif");
-}
-
-.gif-olivia-wilde {
-  background-image: url("../gifs/women-day/olivia-wilde.gif");
-}
-
-.gif-rihanna-2 {
-  background-image: url("../gifs/women-day/rihanna-2.gif");
-}
-
-.gif-rihanna-3 {
-  background-image: url("../gifs/women-day/rihanna-3.gif");
-}
-
-.gif-rihanna-7 {
-  background-image: url("../gifs/women-day/rihanna-7.gif");
-}
-
-.gif-smoking-model {
-  background-image: url("../gifs/women-day/smoking-model.gif");
-}
-
-.gif-street-dancing {
-  background-image: url("../gifs/women-day/street-dancing.gif");
-}
-
-.gif-taylor-swift-2 {
-  background-image: url("../gifs/women-day/taylor-swift-2.gif");
-}
-
-.gif-uma-thurman-1 {
-  background-image: url("../gifs/women-day/uma-thurman-1.gif");
-}
-
-.gif-uma-thurman-2 {
-  background-image: url("../gifs/women-day/uma-thurman-2.gif");
-}
-
-.gif-uma-thurman-3 {
-  background-image: url("../gifs/women-day/uma-thurman-3.gif");
-}
-
-.gif-wonder-woman-2 {
-  background-image: url("../gifs/women-day/wonder-woman-2.gif");
-}
-
-.gif-zooey-deschanel {
-  background-image: url("../gifs/women-day/zooey-deschanel.gif");
-}
-
-.gif-audrey-hepburn-1 {
-  background-image: url("../gifs/women-day/audrey-hepburn-1.gif");
-}
-
-.gif-audrey-hepburn-3 {
-  background-image: url("../gifs/women-day/audrey-hepburn-3.gif");
-}
-
-.gif-los-angeles-wd {
-  background-image: url("../gifs/women-day/los-angeles-wd.gif");
+  background-image: url("https://s3-ap-southeast-1.amazonaws.com/gif-music-television/gif/abstract-rainbow-4.gif");
 }

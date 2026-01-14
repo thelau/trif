@@ -20,11 +20,11 @@
 	<meta property="og:type"
 		content="website"/>
 	<meta property="og:url"
-		content="http://trif.it"/>
+		content="https://trif.it"/>
 	<meta property="og:description"
 		content="TRIF in moderation. Excessive TRIFing may limit your capacity to deal with reality. If you're under 18 years of age, consult your parents before you TRIF."/>
 	<meta property="og:image"
-		content="http://trif.it/assets/images/facebook-share-600x315-v2.jpg"/>
+		content="https://trif.it/assets/images/facebook-share-600x315-v2.jpg"/>
 
   <!-- Twitter Cards meta tags -->
   <meta name="twitter:card"
@@ -38,7 +38,7 @@
   <meta name="twitter:description"
     content="TRIF in moderation. Excessive TRIFing may limit your capacity to deal with reality. If you're under 18 years of age, consult your parents before you TRIF.">
   <meta name="twitter:image:src"
-    content="http://trif.it/assets/images/twitter-share-600x315-v2.jpg">
+    content="https://trif.it/assets/images/twitter-share-600x315-v2.jpg">
 
   <!-- Icons (no mobile icons as it's not mobile friendly) -->
   <link rel="icon" type="image/png" href="assets/images/icon.png">
@@ -48,7 +48,7 @@
 
   <link rel="stylesheet" href="assets/css/normalize.css">
 
-  <link rel="stylesheet" href="assets/css/style.css" media="screen" type="text/css" />
+  <link rel="stylesheet" href="assets/css/style-20211127-01.css" media="screen" type="text/css" />
 
 </head>
 
@@ -56,8 +56,8 @@
 
   <div id="visuals">
     <div class="scanlines"></div>
-    <div id="incompatible-mobile" class="overlay"><p>TRIF is intended for larger screens and works only on the desktop version of <a target="_blank" href="http://www.google.com/chrome/">Chrome</a> at the moment.</p></div>
-    <div id="incompatible-desktop" class="overlay"><p>TRIF only works on <a target="_blank" href="http://www.google.com/chrome/">Chrome</a> at the moment.</p></div>
+    <div id="incompatible-mobile" class="overlay"><p>TRIF is intended for larger screens and works only on the desktop version of <a target="_blank" href="https://www.google.com/chrome/">Chrome</a> at the moment.</p></div>
+    <div id="incompatible-desktop" class="overlay"><p>TRIF only works on <a target="_blank" href="https://www.google.com/chrome/">Chrome</a> at the moment.</p></div>
     <div id="loading" class="overlay"></div>
   </div>
   <div id="branding">
@@ -69,7 +69,8 @@
     <a id="now-playing" target="blank"></a>
     <a id="fullscreen" class="button" data-state="not-fullscreen"></a>
   </p>
-  <p id="about"><span class="landscape-only">Built for <a target="_blank" href="http://www.google.com/chrome/">Google Chrome</a> / </span><a href="mailto:hello@trif.it">hello@trif.it</a> <span class="landscape-only">/ c: color-grayscale / r: manual control </span>/ <a target="_blank" href="http://twitter.com/thelau">@thelau</a></p>
+  <p id="about"><span class="landscape-only">Since 2014 / </span><a href="mailto:hello@trif.it">hello@trif.it</a> <span class="landscape-only">/ c: color-grayscale / r: change visuals</span>/ <a target="_blank" href="https://twitter.com/thelau">@thelau</a></p>
+  <audio id="audio" crossorigin="anonymous"></audio>
   <script src="assets/js/parser.js"></script>
   <script src="assets/js/tokenizer.js"></script>
   <script src="assets/js/vminpoly.js"></script>
@@ -77,21 +78,17 @@
   <script src="assets/js/PxLoader.js"></script>
   <script src="assets/js/PxLoaderImage.js"></script>
 
-  <script src="assets/js/index-20150307-08.js"></script>
+  <script src="assets/js/index-20221226-01.js"></script>
 
-  <!-- start Google Analytics -->
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-6YXVG44DGN"></script>
   <script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
 
-    ga('create', 'UA-56536113-1', 'auto');
-
-    // Demographic and interest reports
-    ga('require', 'displayfeatures');
+    gtag('config', 'G-6YXVG44DGN');
   </script>
-  <!-- end Google Analytics -->
 
 </body>
 
