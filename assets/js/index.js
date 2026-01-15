@@ -411,6 +411,9 @@ function setPlayingRadio(radioId, play) {
     history.pushState(newHistoryState, "Listening to " + radios[currentRadioId].name + " - TRIF", "#/radio/" + radios[currentRadioId].encodedName);
   }
 
+  // Set loading state before changing audio source
+  controlsElement.dataset.state = "loading";
+
   // Change audio source and replace radio label + external URL
   // XXX: Music plays while we load, ok for now... Not like that on mobile obviously
   audioElement.src = radios[currentRadioId].stream;
@@ -516,6 +519,7 @@ function playPauseRadio() {
   if(audioPlaying) {
     pauseRadio();
   } else {
+    controlsElement.dataset.state = "loading";
     playRadio();
   }
 }
