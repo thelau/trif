@@ -1,6 +1,6 @@
 # AGENTS.md
 
-This repository contains TRIF, an audio-visualizer web application built with vanilla JavaScript, SASS, and Grunt. Agents working in this codebase should follow these guidelines.
+This repository contains TRIF, an audio-visualizer web application built with vanilla JavaScript, SASS, and modern npm scripts. Agents working in this codebase should follow these guidelines.
 
 ## Build Commands
 
@@ -8,22 +8,26 @@ This repository contains TRIF, an audio-visualizer web application built with va
 # Install dependencies
 npm install
 
-# Start development server (runs on http://localhost:4000)
-grunt
-# or explicitly:
-grunt connect
+# Start development server with auto-reload (runs on http://localhost:4000)
+npm run dev
 
-# Compile SASS to CSS
-grunt sass
+# Compile SASS to CSS (production)
+npm run sass
 
 # Watch for SASS changes and auto-compile
-grunt min
-# or explicitly:
-grunt watch
+npm run sass:watch
 
-# Minify CSS
-grunt cssmin
+# Production build
+npm run build
+
+# Clean and reinstall dependencies
+npm run clean
 ```
+
+**Development Workflow:**
+- `npm run dev` - Starts live-server on port 4000 with auto-reload when SASS files change
+- `npm run sass:watch` - Watch mode for SASS compilation only
+- `npm run sass` - One-time SASS compilation for production
 
 **Note**: No test framework is configured. There are no unit or integration tests. Testing should be done manually in the browser, targeting Chrome (desktop) as the primary platform.
 
@@ -82,19 +86,19 @@ grunt cssmin
 ```
 /
 ├── index.html                 # Main HTML file
-├── Gruntfile.js              # Build configuration
 ├── package.json              # Dependencies and project info
-├── config.rb                 # Compass/SASS configuration
+├── AGENTS.md               # Agent guidelines
 ├── assets/
 │   ├── scss/
 │   │   └── style.scss       # Main stylesheet (source)
 │   ├── css/
-│   │   └── style.css        # Compiled stylesheet
+│   │   ├── style.css        # Compiled stylesheet (from SASS)
+│   │   └── normalize.css   # CSS reset
 │   ├── js/
-│   │   ├── index-*.js       # Main application logic
-│   │   ├── parser.js        # CSS parser (library)
-│   │   ├── tokenizer.js     # CSS tokenizer (library)
-│   │   └── [other libs]
+│   │   ├── index.js        # Main application logic
+│   │   ├── parser.js       # CSS parser (library)
+│   │   ├── tokenizer.js    # CSS tokenizer (library)
+│   │   └── [other libs]   # PxLoader, keymaster, vminpoly, preloadjs
 │   ├── gifs/                # Visual assets organized by category
 │   └── images/              # Static images (icons, logos)
 ```
@@ -126,7 +130,7 @@ grunt cssmin
 
 When making changes:
 1. Test in Chrome desktop browser only
-2. Verify SASS compiles correctly with `grunt sass`
+2. Verify SASS compiles correctly with `npm run sass`
 3. Check responsive behavior if modifying layout
 4. Verify audio visualization still works correctly
-5. Run the dev server with `grunt` to preview changes
+5. Run the dev server with `npm run dev` to preview changes
