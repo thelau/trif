@@ -6,9 +6,10 @@
   "engines": {
     "node": ">=18.20.0"
   },
-  "scripts": {
-    "dev": "npm-run-all --parallel sass:watch dev:server",
+    "scripts": {
+    "dev": "npm-run-all --parallel sass:watch dev:https",
     "dev:server": "live-server --port=4000 --open=/ --quiet",
+    "dev:https": "local-https-server --port=4000 --cert=cert.pem --key=key.pem --open=/ --quiet",
     "sass": "sass assets/scss:assets/css --style=compressed --no-source-map",
     "sass:watch": "sass assets/scss:assets/css --style=compressed --watch",
     "build": "npm run sass",

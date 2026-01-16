@@ -3,392 +3,138 @@
 
 // Effects and the gifs associated
 
-var gifsForNoIntensity = ["wall-projection", "next-fashion", "space", "wave", "screen"];
 var effects = [
   {"name":"techno",
    "fullName":"Techno",
-   "assetsPath": window.location.origin + "/assets/gifs/",
-   "gifs":[gifsForNoIntensity,
-           ["concrete", "falling-chemical-reaction", "filaments-hand", "deepdream", "c4d-glitch", "moving-statue", "3d-scan-1", "meteorit-fractals", "planet-spaceship", "imaginary-system-1", "walking-alien", "light-installation", "recursive-buildings", "parallel-world", "hypnotic-springs", "walking-robot", "kidmograph-3", "elephant", "zebra", "run", "los-angeles", "infinite-room", "night-train", "vintage-face", "underwater-woman", "running-steps", "giant-statue", "rotating-cubes-in-cubes"],
-           ["live-painting", "circle-clouds-inverted", "face-particles-inverted", "moutains-pixel-shaded", "raven-kwok-1", "shape-shifting-street-1", "shape-shifting-moutain-2", "broken-screen", "bonnaroo-6", "demo-scene-2", "balls-in-light", "pasto-2", "trippy-abstract", "daft-punk-2", "drawing-alive", "particles-spheres", "water-colour"],
-           ["style-transfer-1", "holo-dance", "3d-scan-3", "demo-3", "monkey-fall", "particles-dancer", "kid-changing-clothes", "crowd", "mixed-reality", "vintage-club", "beyonce-2", "glitch-80s", "move", "raver-1", "raver-4"]],
-   "treatment": "default",
-   "color": false},
+   "gifs":[["smoking-triangle", "mouth", "walking-mickey", "urchin", "abstract-art-loop", "flashing-wall"],
+           ["kidmograph-3", "base-jumping", "elephant", "road", "squares", "zebra", "heart", "run", "kidmograph-2", "reagan", "shapes-tunnel", "dolphins", "random-shapes", "small-abstract-rectangles"],
+           ["triangle", "spinning-pyramids", "3d-circle", "3d-mirrors", "kidmograph", "crossing-eyes", "biology", "cubes", "abstract-geometry", "trippy-abstract"],
+           ["simpsons", "abstract-rainbow-3", "abstract-rainbow-4"]]},
 
   {"name":"dubstep",
    "fullName":"Dubstep",
-   "assetsPath": window.location.origin + "/assets/gifs/",
-   "gifs":[gifsForNoIntensity,
-           ["concrete", "falling-chemical-reaction", "filaments-hand", "deepdream", "c4d-glitch", "moving-statue", "3d-scan-1", "meteorit-fractals", "planet-spaceship", "imaginary-system-1", "face-water", "distorted-crowd", "light-installation", "recursive-buildings", "kidmograph-3", "base-jumping", "zebra", "run", "los-angeles", "infinite-room", "night-train", "running-steps", "giant-statue", "miami-vice", "rotating-cubes-in-cubes"],
-           ["live-painting", "face-particles-inverted", "moutains-pixel-shaded", "raven-kwok-1", "shape-shifting-street-1", "shape-shifting-moutain-2", "broken-screen", "bonnaroo-6", "pasto-2", "drawing-alive", "abstract-excavation"],
-           ["3d-scan-3", "demo-3", "particles-dancer", "urban-dancer", "clones-1", "clones-2", "jennifer-lopez", "tyler", "empire"]],
-   "treatment": "default",
-   "color": false},
-
-  {"name":"drumnbass",
-   "fullName":"Drum and Bass",
-   "assetsPath": window.location.origin + "/assets/gifs/",
-   "gifs":[gifsForNoIntensity,
-           ["concrete", "filaments-hand", "deepdream", "c4d-glitch", "moving-statue", "3d-scan-1", "meteorit-fractals", "planet-spaceship", "imaginary-system-1", "light-installation","recursive-buildings", "parallel-world", "kidmograph-3", "base-jumping", "zebra", "run", "los-angeles", "infinite-room", "night-train", "running-steps", "giant-statue", "miami-vice", "rotating-cubes-in-cubes"],
-           ["live-painting", "face-particles-inverted", "moutains-pixel-shaded", "raven-kwok-1", "shape-shifting-street-1", "shape-shifting-moutain-2", "broken-screen", "bonnaroo-6", "demo-scene-2", "balls-in-light", "pasto-2", "drawing-alive", "water-colour"],
-           ["style-transfer-1", "holo-dance", "3d-scan-2", "3d-scan-3", "missy-elliot-2", "missy-elliot-3", "urban-dancer", "missy-elliot-1", "crowd", "mixed-reality", "beyonce-3"]],
-   "treatment": "default",
-   "color": false},
+   "gifs":[["smoking-triangle", "mouth", "walking-mickey", "urchin", "abstract-art-loop", "flashing-wall"],
+           ["kidmograph-3", "base-jumping", "elephant", "road", "squares", "zebra", "heart", "run", "kidmograph-2", "reagan", "shapes-tunnel", "dolphins", "random-shapes", "small-abstract-rectangles"],
+           ["yellow-particles", "triangle", "3d-circle", "3d-mirrors", "bmx", "crossing-eyes", "biology", "cubes", "abstract-geometry", "trippy-abstract"],
+           ["jennifer-lopez", "breakdancer"]]},
 
   {"name":"trance",
    "fullName":"Trance",
-   "assetsPath": window.location.origin + "/assets/gifs/",
-   "gifs":[gifsForNoIntensity,
-           ["deepdream", "demo-1", "demo-3", "close-up-head", "light-installation", "kidmograph-3", "zebra"],
-           ["live-painting", "bubbles-up", "tree-lights", "broken-screen", "glitchy-face", "fractal", "distortion", "trippy-mushrooms", "psychedelic-clouds"],
-           ["looking-up", "fast-movements-explosions", "light-dancer-1", "light-dancer-2", "light-dancer-3"]],
-   "treatment": "default",
-   "color": true},
-
-  {"name":"women-day",
-   "fullName":"Women day",
-   "assetsPath": window.location.origin + "/assets/gifs/women-day/",
-   "gifs":[gifsForNoIntensity,
-           ["audrey-tautou-2", "lips", "audrey-hepburn-3", "audrey-hepburn-1", "zooey-deschanel", "wonder-woman-2", "uma-thurman-3", "uma-thurman-2", "uma-thurman-1", "taylor-swift-2", "smoking-model", "rihanna-7", "rihanna-3", "rihanna-2", "olivia-wilde", "natalie-portman-4", "natalie-portman-2", "nail-art", "monica-bellucci-4", "makeup", "madonna-3", "lady-gaga-12", "lady-gaga-11", "lady-gaga-10", "lady-gaga-9", "lady-gaga-7", "kristen-dunst", "kate-moss", "judy-garland-1", "janelle-monae", "janelle-monae-2", "indonesia", "grace-kelly-1", "glitch-80s", "friendship", "fashion-8", "fashion-7", "fashion-5", "fashion-3", "fashion-1", "emma-stone-1", "destinys-child", "demi-lovato", "beyonce-5", "asian-woman-1", "1940s-woman", "1930s-woman"],
-           ["los-angeles", "nicki-minaj-1", "kaleidoscope", "illusion-1", "frequency-waves"],
-           ["audrey-tautou-2", "lips", "audrey-hepburn-3", "audrey-hepburn-1", "zooey-deschanel", "wonder-woman-2", "uma-thurman-3", "uma-thurman-2", "uma-thurman-1", "taylor-swift-2", "smoking-model", "rihanna-7", "rihanna-3", "rihanna-2", "olivia-wilde", "natalie-portman-4", "natalie-portman-2", "nail-art", "monica-bellucci-4", "makeup", "madonna-3", "lady-gaga-12", "lady-gaga-11", "lady-gaga-10", "lady-gaga-9", "lady-gaga-7", "kristen-dunst", "kate-moss", "judy-garland-1", "janelle-monae", "janelle-monae-2", "indonesia", "grace-kelly-1", "glitch-80s", "friendship", "fashion-8", "fashion-7", "fashion-5", "fashion-3", "fashion-1", "emma-stone-1", "destinys-child", "demi-lovato", "beyonce-5", "asian-woman-1", "1940s-woman", "1930s-woman"]],
-   "treatment": "default",
-   "color": false}
+   "gifs":[["smoking-triangle", "mouth", "walking-mickey", "urchin", "abstract-art-loop", "flashing-wall"],
+           ["kidmograph-3", "psychedelic-globes", "zebra", "kidmograph-2", "shapes-tunnel", "dolphins", "random-shapes", "small-abstract-rectangles"],
+           ["psychedelic-kaleidoscope", "psychedelic-fire", "psychedelic-kaleidoscope-2", "mandala", "3d-circle", "3d-mirrors", "kidmograph", "crossing-eyes", "biology", "cubes", "abstract-geometry", "trippy-abstract", "trippy-abstract"],
+           ["simpsons", "abstract-rainbow-3", "abstract-rainbow-4"]]}
 ];
 var currentEffectId;
-var currentEffectTreatment;
+var currentEffectName;
 var hasCurrentEffectColor = false;
 var currentGifForNoIntensity;
 var currentGifForIntensityLevel1;
 var currentGifForIntensityLevel2;
 var currentGifForIntensityLevel3;
-var timeoutRandomizingVisuals;
-var timeoutTimeRandomizingVisuals = 15000; // Changing visuals at max every X ms
+var intervalRandomizingVisuals;
+var intervalTimeRandomizingVisuals = 15000; // Changing visuals every 10 seconds
 
-// Intensity levels
-var defaultIntensityLevels = [0, 100, 127.5, 140, 155];
-//var defaultIntensityLevels = [0, 132.5, 150, 162.5, 177.5];
+// Audio variables
+var audioContext;
+var audioAnalyser;
+var fftSize = 32;
+var smoothingTimeConstant = 0.8; // Default 0.8
+var audioSetup = false;
+var audioPlaying;
+var audioElement = new Audio();
+
+// Radios to play
+var defaultLevels = [0, 120, 150, 170, 185];
+var radios = [
+  {"name":"Dublovers.FM",
+   "url":"http://mlc.fm/",
+   "stream":"http://ml0.t4e.dj:80/dublovers_high.mp3",
+   "effect":1,
+   "levels":[0, 120, 150, 175, 190]},
+  {"name":"DubTerrain.net",
+   "url":"http://www.dubterrain.net/",
+   "stream":"http://ic2255.c471.fast-serv.com:80/autodj",
+   "effect":1,
+   "levels":defaultLevels},
+  {"name":"UZIC techno - minimal",
+   "url":"http://www.uzic.ch/",
+   "stream":"http://stream.uzic.ch:9010/;nsv.mp3",
+   "effect":0,
+   "levels":defaultLevels},
+  {"name":"HBR1 - Tronic Lounge",
+   "url":"http://www.hbr1.com",
+   "stream":"http://radio.hbr1.com:19800/tronic.ogg",
+   "effect":0,
+   "levels":defaultLevels},
+  {"name":"BunkerTV",
+   "url":"http://bunkertv.de",
+   "stream":"http://www3.2lss.de:8002/bb.mp3",
+   "effect":0,
+   "levels":defaultLevels},
+  {"name":"BassDrive.com",
+   "url":"http://www.bassdrive.com",
+   "stream":"http://shouthost.com.19.streams.bassdrive.com:8200/;stream.mp3",
+   "effect":1,
+   "levels":defaultLevels},
+  {"name":"HBR1 - I.D.M. Tranceponder",
+   "url":"http://www.hbr1.com",
+   "stream":"http://radio.hbr1.com:19800/trance.ogg",
+   "effect":2,
+   "levels":defaultLevels}
+];
+var defaultRadioId = 0;
+var currentRadioId;
 var currentIntensityLevel1;
 var currentIntensityLevel2;
 var currentIntensityLevelAlt;
 var currentIntensityLevel3;
 var currentIntensityLevel3Alt;
-var intensityLevelAdjustment = 0;
 
-// Audio variables
-var radioSource;
-var micSource;
-var audioContext;
-var audioAnalyser;
-var audioGain;
-var fftSize = 32;
-var smoothingTimeConstant = 0.8; // Default 0.8
-var audioSetup = false;
-var audioPlaying;
-var audioElement = document.getElementById("audio");
-var inputAudioStream;
-var isInputAudioActive = false;
+// This variable will adjust browser reaction to intensity
+// XXX: Kill if this is not changing anything
+var browserIntensityCompensation = 0;
 
-// Radios to play
-var radios = [
-  /*{
-    "id": 0,
-    "name":"sunshine live - Techno",
-    "encodedName":"sunshine-live-techno",
-    "url":"https://www.sunshine-live.de/",
-    "stream":"https://sunshinelive.hoerradar.de/sunshinelive-techno-mp3-mq?sABC=5r5243p1%230%23ps8oo70oq3or323p658537250n3r07p9%23enqvbqr&amsparams=playerid:radiode;skey:1582449601",
-    "effect":0,
-    "levels":defaultIntensityLevels,
-    "levelAdjustment":12
-  },{
-    "id": 1,
-    "name":"DubTerrain",
-    "encodedName":"dubterrain",
-    "url":"http://www.dubterrain.net/",
-    "stream":"http://ic2255.c471.fast-serv.com:80/autodj",
-    "effect":1,
-    "levels":defaultIntensityLevels,
-    "levelAdjustment":22
-  },{
-    "id": 2,
-    "name":"minimalmix radio",
-    "encodedName":"minimalmix-radio",
-    "url":"http://minimalmix.com/",
-    "stream":"http://5.39.71.159:8750/stream/1/",
-    "effect":0,
-    "levels":defaultIntensityLevels,
-    "levelAdjustment":27
-  },{
-    "id": 3,
-    "name":"Sound Of Berlin",
-    "encodedName":"sound-of-berlin",
-    "url":"http://www.fluxfm.de/",
-    "stream":"https://sec-fluxfm.hoerradar.de/flux-berlinsound-mp3-hq?sABC=5r524p1o%230%23ps8oo70oq3or323p658537250n3r07p9%23enqvbqr&amsparams=playerid:radiode;skey:1582451739",
-    "effect":0,
-    "levels":defaultIntensityLevels,
-    "levelAdjustment":28
-  },{
-    "id": 4,
-    "name":"Futuredrumz Radio",
-    "encodedName":"futuredrumz-radio",
-    "url":"http://futuredrumz.com/",
-    "stream":"http://5.39.71.159:8625/stream/1/",
-    "effect":2,
-    "levels":defaultIntensityLevels,
-    "levelAdjustment":7,
-  }/{
-    "id": 0,
-    "name":"Cosmosradio",
-    "encodedName":"cosmosradio",
-    "url":"https://www.cosmosradio.de/",
-    "stream":"https://server33829.streamplus.de/stream/1/",
-    "effect":0,
-    "levels":defaultIntensityLevels,
-    "levelAdjustment":27
-  },*/{
-    "id": 0,
-    "name":"Traxx.FM Tech-Minimal",
-    "encodedName":"traxx-fm-tech-minimal",
-    "url":"http://www.traxx.fm/",
-    "stream":"https://traxx020.ice.infomaniak.ch/traxx020-low.mp3",
-    "effect":0,
-    "levels":defaultIntensityLevels,
-    "levelAdjustment":27
-  },{
-    "id": 1,
-    "name":"BOM Psytrance Radio",
-    "encodedName":"bom-psytrance-radio",
-    "url":"http://www.1.fm/",
-    "stream":"http://strm112.1.fm/psytrance_mobile_mp3",
-    "effect":3,
-    "levels":defaultIntensityLevels,
-    "levelAdjustment":34
-  },/*{
-    "id": 8,
-    "name":"Techno Planet",
-    "encodedName":"techno-planet",
-    "url":"http://technoplanet.live/",
-    "stream":"http://hyades.shoutca.st:8809/stream/1/",
-    "effect":0,
-    "levels":defaultIntensityLevels,
-    "levelAdjustment":27
-  },{
-    "id": 3,
-    "name":"PsyStation - Full On Psy Trance",
-    "encodedName":"psystation-full-on-psy-trance",
-    "url":"http://www.psystation.com/",
-    "stream":"https://hestia2.cdnstream.com/1455_128",
-    "effect":3,
-    "levels":defaultIntensityLevels,
-    "levelAdjustment":34
-  },{
-    "id": 10,
-    "name":"RAVELINEfm TECHNO RADIO",
-    "encodedName":"ravelinefm-techno-radio",
-    "url":"http://www.raveline.be/",
-    "stream":"https://listen.radioking.com/radio/256432/stream/301039",
-    "effect":0,
-    "levels":defaultIntensityLevels,
-    "levelAdjustment":27
-  },{
-    "id": 11,
-    "name":"Radio Record Techno",
-    "encodedName":"radio-record-techno",
-    "url":"https://www.radiorecord.ru/",
-    "stream":"http://air.radiorecord.ru:805/techno_128",
-    "effect":0,
-    "levels":defaultIntensityLevels,
-    "levelAdjustment":27
-  },{
-    "id": ,
-    "name":"test",
-    "encodedName":"test",
-    "url":"",
-    "stream":"",
-    "effect":0,
-    "levels":defaultIntensityLevels,
-    "levelAdjustment":27
-  }*/
-];
-var defaultRadioId = 0;
-var currentRadioId;
-
-// Visuals variables
-var controlsElement = document.getElementById("controls");
+// Visual variables
 var visualsElement = document.getElementById("visuals");
 var nowPlayingElement = document.getElementById("now-playing");
-var loadingElement = document.getElementById("loading");
-var loadingVisuals = false;
 
-// Tools & Utilities functions
-var isBrowserIncompatible = false;
-
-// Detect mobile
-// Script from Cory LaViska
-// http://www.abeautifulsite.net/detecting-mobile-devices-with-javascript/
-var isMobile = {
-    Android: function() {
-        return navigator.userAgent.match(/Android/i);
-    },
-    BlackBerry: function() {
-        return navigator.userAgent.match(/BlackBerry|BB10; Touch/i);
-    },
-    iOS: function() {
-        return navigator.userAgent.match(/iPhone|iPad|iPod/i);
-    },
-    Opera: function() {
-        return navigator.userAgent.match(/Opera Mini/i);
-    },
-    Windows: function() {
-        return navigator.userAgent.match(/IEMobile/i);
-    },
-    any: function() {
-        return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
-    }
-};
-
-// Detect if it's Chrome
-var isChrome = function() {
-  return Boolean(window.chrome);
-}
-
-// This is where it all starts...
+// TO DEFINE
 function init() {
   //console.log("in init");
 
-  // Test if mobile
-  if (isMobile.any()) {
-    var incompatibleMobileElement = document.getElementById("incompatible-mobile");
-    incompatibleMobileElement.style.display = "block";
-    isBrowserIncompatible = true;
-
-  // Test for other incompatible browsers (for now, all of them but Chrome
-  // and Chrome Canary)
-  } else if (!isChrome()) {
-    var incompatibleDesktopElement = document.getElementById("incompatible-desktop");
-    incompatibleDesktopElement.style.display = "block";
-    isBrowserIncompatible = true;
-  }
-
-  // If we found that the browser cannot make it, we will take care of that
-  // using styling...
-  if (isBrowserIncompatible) {
-    var root = document.documentElement;
-    root.className += " incompatible";
-
-  // ...if not we just party!
-  } else {
-    setupVisuals();
-    //setupAudio();
-    handleRouting();
-  }
+  requestAnimationFrame(updateVisuals);
+  setupAudio();
 }
 window.addEventListener('load',init,false);
 
-
-// TODO: DESCRIPTION TO DEFINE
-function setupVisuals() {
-  //console.log("setupVisuals()");
-
-  requestAnimationFrame(updateVisuals);
-}
-
-// TODO: DESCRIPTION TO DEFINE
+// TO DEFINE
 function setupAudio() {
   //console.log("setupAudio()");
-
-  //audioElement.autoplay = true;
-  audioElement.preload = true;
-  //audioElement.crossOrigin = "anonymous";
 
   audioContext = new (window.AudioContext || window.webkitAudioContext)();
   audioAnalyser = audioContext.createAnalyser();
   audioAnalyser.fftSize = fftSize;
   audioAnalyser.smoothingTimeConstant = smoothingTimeConstant;
-  audioGain = audioContext.createGain();
+
+  // Configure the <audio> element
+  audioElement.autoplay = true;
+  audioElement.preload = true;
+
+  setPlayingRadio(defaultRadioId);
 
   // Connect the source, analyser and the output together
-  radioSource = audioContext.createMediaElementSource(audioElement);
-  radioSource.connect(audioAnalyser);
-  audioAnalyser.connect(audioGain);
-  audioGain.connect(audioContext.destination);
+  var audioSource = audioContext.createMediaElementSource(audioElement);
+  audioSource.connect(audioAnalyser);
+  audioAnalyser.connect(audioContext.destination);
 
   // We good to go, yo, let's trif!
   audioSetup = true;
 }
 
-// TODO 1: DESCRIPTION TO DEFINE
-// TODO 2: Don't use hashbang stuff here and go full html5 mode on
-// TODO 3: If pushstate was to throw popstate event, we could use the listener
-// to trigger functionality like playing radio, etc which should not be handled
-// by this function.
-// TODO 4: Throw popstate event manually after pushstate calls. Pushstate should
-// be done in this function and not the setPlayingRadio one for centralization sake
-function handleRouting() {
-  //console.log("handleRouting()");
-
-  // Analyse the URL and decides what to play
-  var givenHashbang = window.location.hash;
-  //console.log("handleRouting() - Given hashbang: " + givenHashbang);
-
-  // If no hashbang, we engage into the default behaviour
-  if (!givenHashbang) {
-    setPlayingRadio(defaultRadioId, false);
-  } else {
-
-    // Check the link type
-    var hashbangType;
-
-    // If the hashbang starts with #/radio/
-    //console.log("setupAudio() - hasbangType is radio? " + givenHashbang.substring(0, 8));
-    if (givenHashbang.substring(0, 8) == "#/radio/") {
-      hashbangType = "radio";
-    }
-
-    //console.log("setupAudio() - hasbangType: " + hashbangType);
-
-    // Do default behaviour according to the hashbang type
-    if (hashbangType == "radio") {
-      // Grab the radio encoded name out of the hashbang
-      var givenRadioEncodedName = givenHashbang.substring(8);
-
-      //console.log("setupAudio() - Radio - Encoded name: " + givenRadioEncodedName);
-
-      // Check if a radio exists for that encoded name
-      var givenRadio = radios.filter(function(radio) {
-        return radio.encodedName == givenRadioEncodedName;
-      });
-
-      // XXX: If more than one radio is returned (because that's .filter does),
-      // too bad because we will take only the first one.
-      if (givenRadio.length > 0) {
-        //console.log("setupAudio() - Radio - Encoded name was found");
-        setPlayingRadio(givenRadio[0].id, false);
-      } else {
-        //console.log("setupAudio() - Radio - Encoded name was not found");
-        setPlayingRadio(defaultRadioId, false);
-      }
-
-    // We don't know what this link is, engaging into the default behaviour
-    } else {
-      setPlayingRadio(defaultRadioId, false);
-    }
-  }
-}
-
-// Routing
-window.addEventListener("popstate", function(event) {
-  //console.log("popstate event");
-  //console.log("popstate event - location: " + document.location);
-  //console.log("popstate event - state: " + JSON.stringify(event.state));
-  //console.log(event);
-
-  handleRouting();
-});
-
 // Update audio being played
-function setPlayingRadio(radioId, play) {
-  //console.log("setPlayingRadio(" + radioId + " - " + play + ")");
+function setPlayingRadio(radioId) {
+  //console.log("updateAudio(" + radioId + ")");
 
   // Test if ID is bigger than the size of the table.
   // If so go back to the first one
@@ -397,121 +143,51 @@ function setPlayingRadio(radioId, play) {
   } else {
     currentRadioId = radioId % radios.length;
   }
-  //console.log("setPlayingRadio() - New currentRadioId is: " + currentRadioId);
-
-  // Change URL by pushing a new state (only if different from the current one)
-  // XXX: This code should go in handleRouting() asap with just a replacestate
-  // here eventually
-  var currentHistoryState = history.state;
-  var newHistoryState = { radio: radios[currentRadioId].encodedName };
-  //console.log("setPlayingRadio() - Current history state: " + JSON.stringify(currentHistoryState));
-  //console.log("setPlayingRadio() - New history state: " + JSON.stringify(newHistoryState));
-  //console.log("setPlayingRadio() - Current history state == New history state? " + (JSON.stringify(currentHistoryState) == JSON.stringify(newHistoryState)));
-  if(JSON.stringify(currentHistoryState) != JSON.stringify(newHistoryState)) {
-    history.pushState(newHistoryState, "Listening to " + radios[currentRadioId].name + " - TRIF", "#/radio/" + radios[currentRadioId].encodedName);
-  }
-
-  // Set loading state before changing audio source
-  controlsElement.dataset.state = "loading";
+  //console.log("New currentRadioId is: " + currentRadioId);
 
   // Change audio source and replace radio label + external URL
-  // XXX: Music plays while we load, ok for now... Not like that on mobile obviously
   audioElement.src = radios[currentRadioId].stream;
-  if(audioSetup) audioElement.play();
   nowPlayingElement.href = radios[currentRadioId].url;
   nowPlayingElement.innerHTML = radios[currentRadioId].name;
 
-  //console.log(radioSource);
+  // Prepare & randomize the visuals
+  currentEffectId = radios[currentRadioId].effect;
+  currentEffectName = effects[currentEffectId].name;
 
-  loadVisuals(radios[currentRadioId].effect);
-}
+  // At which level is the effect going to react for this radio
+  //
+  currentIntensityLevel1 =
+    (radios[currentRadioId].levels[0] > browserIntensityCompensation)
+    ? radios[currentRadioId].levels[0] - browserIntensityCompensation
+    : 0;
+  currentIntensityLevel2 =
+    (radios[currentRadioId].levels[1] > browserIntensityCompensation)
+    ? radios[currentRadioId].levels[1] - browserIntensityCompensation
+    : 0;
+  currentIntensityLevel2Alt =
+    (radios[currentRadioId].levels[2] > browserIntensityCompensation)
+    ? radios[currentRadioId].levels[2] - browserIntensityCompensation
+    : 0;
+  currentIntensityLevel3 =
+    (radios[currentRadioId].levels[3] > browserIntensityCompensation)
+    ? radios[currentRadioId].levels[3] - browserIntensityCompensation
+    : 0;
+  currentIntensityLevel3Alt =
+    (radios[currentRadioId].levels[4] > browserIntensityCompensation)
+    ? radios[currentRadioId].levels[4] - browserIntensityCompensation
+    : 0;
 
-// Load given visuals
-function loadVisuals(effectId) {
-  //console.log("loadVisuals(" + effectId + ")");
+  // Choose gifs to display with this new radio
+  randomizeVisuals();
 
-  // Grabbing info about the effect associated with that radio
-  currentEffectId = effectId;
-  hasCurrentEffectColor = effects[currentEffectId].color;
-  currentEffectTreatment = effects[currentEffectId].treatment;
-
-  // At which level is the effect going to react
-  if(!isInputAudioActive) {
-    currentIntensityLevel1 = radios[currentRadioId].levels[0];
-    currentIntensityLevel2 = radios[currentRadioId].levels[1]
-      + radios[currentRadioId].levelAdjustment;
-    currentIntensityLevel2Alt = radios[currentRadioId].levels[2]
-      + radios[currentRadioId].levelAdjustment;
-    currentIntensityLevel3 = radios[currentRadioId].levels[3]
-      + radios[currentRadioId].levelAdjustment;
-    currentIntensityLevel3Alt = radios[currentRadioId].levels[4]
-      + radios[currentRadioId].levelAdjustment;
-  } else {
-    currentIntensityLevel1 = defaultIntensityLevels[0];
-    currentIntensityLevel2 = defaultIntensityLevels[1];
-    currentIntensityLevel2Alt = defaultIntensityLevels[2];
-    currentIntensityLevel3 = defaultIntensityLevels[3];
-    currentIntensityLevel3Alt = defaultIntensityLevels[4];
-  }
-
-  // Preloading visual assets for the radio effect
-  var visualAssetsLoader = new PxLoader();
-  var baseVisualAssetsUrl = effects[currentEffectId].assetsPath;
-
-  // Add all visual assets needed for that radio to the loading queue
-  var currentVisualAssetId = 0;
-
-  // Load all gifs for the given effect
-  for(var i = 0; i < effects[currentEffectId].gifs.length; i++) {
-    for(var j = 0; j < effects[currentEffectId].gifs[i].length; j++) {
-      var tmpVisualAsset = new PxLoaderImage(baseVisualAssetsUrl + effects[currentEffectId].gifs[i][j] + ".gif");
-      tmpVisualAsset.imageNumber = ++currentVisualAssetId;
-      visualAssetsLoader.add(tmpVisualAsset);
-      //console.log("Preparing image#" + currentVisualAssetId + " (" + baseVisualAssetsUrl + effects[currentEffectId].gifs[i][j] + ".gif) for loading");
-    }
-  }
-
-  // Monitor visual assets when loading is in progress
-  visualAssetsLoader.addProgressListener(function(e) {
-    /*console.log("visualAssetsLoader.addProgressListener()";
-      + " - Image #" + e.resource.imageNumber + " loaded"
-      + " - " + e.completedCount + "/" + e.totalCount);*/
-
-    loadingElement.innerHTML = "<p>Loading visuals<br/>"
-      + "<span class='count'>"
-      + e.completedCount + "/" + e.totalCount +
-      "</span></p>";
-  });
-
-  // Once visual assets have been loaded, we can setup the magic!
-  visualAssetsLoader.addCompletionListener(function() {
-    //console.log("visualAssetsLoader.addCompletionListener() - Loading of assets complete");
-
-    loadingElement.style.display = "none";
-    loadingVisuals = false;
-
-    // Randomize visuals to display with this new radio
-    randomizeVisuals();
-  });
-
-  // Start downloading all visual assets...
-  visualAssetsLoader.start();
-
-  // ...and tell the user about it
-  loadingElement.style.display = "block";
-  loadingVisuals = true;
+  // Prepare for gifs to change randomly
+  intervalRandomizingVisuals = setInterval(randomizeVisuals, intervalTimeRandomizingVisuals);
 }
 
 // Button click & keyboard shortcut to play/pause the current radio
 var playPauseRadioElement = document.getElementById("play-pause");
-playPauseRadioElement.addEventListener("click", function(){
-  //mixpanel.track("Click button 'play-pause'");
-  playPauseRadio();
-});
-key('space', function(){
-  //mixpanel.track("Press space bar");
-  playPauseRadio();
-});
+playPauseRadioElement.addEventListener("click", playPauseRadio);
+key('space', function(){ playPauseRadio() });
 
 function playPauseRadio() {
   //console.log("playPauseRadio()");
@@ -519,7 +195,6 @@ function playPauseRadio() {
   if(audioPlaying) {
     pauseRadio();
   } else {
-    controlsElement.dataset.state = "loading";
     playRadio();
   }
 }
@@ -527,89 +202,47 @@ function playPauseRadio() {
 function playRadio() {
   //console.log("playRadio()");
 
-  if(!audioSetup) setupAudio();
   audioElement.play();
 }
 
 function pauseRadio() {
   //console.log("pauseRadio()");
 
-  if(!audioSetup) setupAudio();
   audioElement.pause();
 }
 
 // Button click & keyboard shortcut to switch to the next radio
 var nextRadioElement = document.getElementById("next");
-nextRadioElement.addEventListener("click", function(){
-  //mixpanel.track("Click button 'next-radio'");
-  nextRadio();
-});
-key('right', function(){
-  //mixpanel.track("Press right key");
-  nextRadio();
-});
+nextRadioElement.addEventListener("click", nextRadio);
+key('right', function(){ nextRadio() });
 
 function nextRadio() {
   //console.log("nextRadio()");
 
-  setPlayingRadio(currentRadioId + 1, false);
+  setPlayingRadio(currentRadioId + 1);
+
+  playRadio();
 }
 
 // Keyboard shortcut to switch to the previous radio
-key('left', function(){
-  //mixpanel.track("Press left key");
-  previousRadio();
-});
+key('left', function(){ previousRadio() });
 
 function previousRadio() {
   //console.log("previousRadio()");
 
-  setPlayingRadio(currentRadioId - 1, false);
+  setPlayingRadio(currentRadioId - 1);
+
+  playRadio();
 }
 
-// Audio listeners and events
+audioElement.addEventListener("play", whenPlaying);
+audioElement.addEventListener("playing", whenPlaying);
 
-/*audioElement.addEventListener("abort", whenAbort);
+function whenPlaying() {
+  //console.log("whenPlaying()");
 
-function whenAbort() {
-  //console.log("whenAbort()");
-}
-
-audioElement.addEventListener("emptied", whenEmptied);
-
-function whenEmptied() {
-  //console.log("whenEmptied()");
-}
-
-audioElement.addEventListener("ended", whenEnded);
-
-function whenEnded() {
-  //console.log("whenEnded()");
-}*/
-
-audioElement.addEventListener("error", whenError);
-
-function whenError(e) {
-  //console.log("whenError()");
-  //console.log(e);
-}
-
-/*audioElement.addEventListener("loadedmetadata", whenMetadataHasBeenLoaded);
-
-function whenMetadataHasBeenLoaded(e) {
-  //console.log("whenMetadataHasBeenLoaded()");
-  //console.log(e);
-}*/
-
-// XXX: Is not triggered when network is crap and radio has to load in the middle.
-// This only works when initially loading.
-//audioElement.addEventListener("loadstart", whenLoading);
-
-function whenLoading() {
-  //console.log("whenLoading()");
-
-  controlsElement.dataset.state = "loading";
-  audioPlaying = false;
+  playPauseRadioElement.dataset.state = "playing";
+  audioPlaying = true;
 }
 
 audioElement.addEventListener("pause", whenPaused);
@@ -617,160 +250,26 @@ audioElement.addEventListener("pause", whenPaused);
 function whenPaused() {
   //console.log("whenPaused()");
 
-  controlsElement.dataset.state = "paused";
+  playPauseRadioElement.dataset.state = "paused";
   audioPlaying = false;
 }
-
-audioElement.addEventListener("playing", whenPlaying);
-
-function whenPlaying() {
-  //console.log("whenPlaying()");
-
-  controlsElement.dataset.state = "playing";
-  audioPlaying = true;
-}
-
-/*audioElement.addEventListener("progress", whenProgress);
-
-function whenProgress(e) {
-  //console.log("whenProgress()");
-  //console.log(e);
-}*/
-
-/*audioElement.addEventListener("seeked", whenSeeked);
-
-function whenSeeked() {
-  //console.log("whenSeeked()");
-}
-
-audioElement.addEventListener("seeking", whenSeeking);
-
-function whenSeeking() {
-  //console.log("whenSeeking()");
-}*/
-
-audioElement.addEventListener("stalled", whenStalled);
-
-function whenStalled() {
-  //console.log("whenStalled()");
-
-  controlsElement.dataset.state = "stalled";
-  audioPlaying = false;
-}
-
-/*audioElement.addEventListener("suspend", whenSuspend);
-
-function whenSuspend() {
-  //console.log("whenSuspend()");
-}*/
-
-/*audioElement.addEventListener("waiting", whenWaiting);
-
-function whenWaiting() {
-  //console.log("whenWaiting()");
-}*/
-
-// Keyboard shortcut to activate/deactivate input audio
-key('i', function(){
-  //mixpanel.track("Press 'i' key");
-
-  if(isInputAudioActive) {
-
-    if(inputAudioStream) inputAudioStream.stop();
-    playRadio();
-    audioGain.gain.value = 1.0;
-
-    isInputAudioActive = false;
-    document.body.dataset.state = "radio";
-
-  } else {
-    navigator.getUserMedia = (navigator.getUserMedia ||
-                              navigator.webkitGetUserMedia ||
-                              navigator.mozGetUserMedia ||
-                              navigator.msGetUserMedia);
-
-    navigator.getUserMedia({audio: true}, function(stream) {
-
-      pauseRadio();
-      inputAudioStream = stream;
-      audioGain.gain.value = 0.0;
-
-      if(!micSource) {
-        micSource = audioContext.createMediaStreamSource(inputAudioStream);
-        micSource.connect(audioAnalyser);
-      }
-      isInputAudioActive = true;
-      document.body.dataset.state = "microphone";
-
-    },
-    function(err) {
-       console.error("defineAudioSource - getUserMedia - Error: " + err);
-    });
-  }
-});
-
-// =/- to adjust intensity level detection
-key('=', function(){
-  //mixpanel.track("Press '=' key");
-  intensityLevelAdjustment += 0.5;
-  //console.log("Intensity level adjustment: " + intensityLevelAdjustment);
-});
-key('-', function(){
-  //mixpanel.track("Press '-' key");
-  intensityLevelAdjustment -= 0.5;
-  //console.log("Intensity level adjustment: " + intensityLevelAdjustment);
-});
-
-// Numbers 1 to 4 activate visuals
-key('1', function(){
-  //mixpanel.track("Press '1' key");
-  loadVisuals(0);
-});
-key('2', function(){
-  //mixpanel.track("Press '2' key");
-  loadVisuals(1);
-});
-key('3', function(){
-  //mixpanel.track("Press '3' key");
-  loadVisuals(2);
-});
-key('4', function(){
-  //mixpanel.track("Press '4' key");
-  loadVisuals(3);
-});
-key('5', function(){
-  //mixpanel.track("Press '4' key");
-  loadVisuals(4);
-});
 
 // Keyboard shortcut to randomize visuals
-key('r', function(){
-  //mixpanel.track("Press 'r' key");
-  randomizeVisuals();
-});
+// Switch to manual mode at the same time, so clear the interval variable randomizing visuals.
+key('r', function(){ clearInterval(intervalRandomizingVisuals); randomizeVisuals(); });
 
 function randomizeVisuals() {
-  //console.log("randomizeVisuals()");
+  //console.log("prepareVisuals()");
 
   // Which gifs to display
   currentGifForNoIntensity = effects[currentEffectId].gifs[0][Math.floor(Math.random() * effects[currentEffectId].gifs[0].length)];
   currentGifForIntensityLevel1 = effects[currentEffectId].gifs[1][Math.floor(Math.random() * effects[currentEffectId].gifs[1].length)];
   currentGifForIntensityLevel2 = effects[currentEffectId].gifs[2][Math.floor(Math.random() * effects[currentEffectId].gifs[2].length)];
   currentGifForIntensityLevel3 = effects[currentEffectId].gifs[3][Math.floor(Math.random() * effects[currentEffectId].gifs[3].length)];
-
-  // Calling back this same function in a randomized number calculated based on
-  // the pre-defined interval of time and 10% of that time (very shitty technique for now)
-  var newTimeoutTimeRandomizingVisuals = Math.floor((Math.random() * timeoutTimeRandomizingVisuals) + (timeoutTimeRandomizingVisuals / 5));
-  //console.log("randomizeVisuals() - Randomizing visuals again in " + newTimeoutTimeRandomizingVisuals + "ms");
-  clearInterval(timeoutRandomizingVisuals);
-  timeoutRandomizingVisuals = setTimeout(randomizeVisuals, newTimeoutTimeRandomizingVisuals);
 }
 
 // Keyboard shortcut to switch color mode
-key('c', function(){
-  //mixpanel.track("Press 'c' key");
-  hasCurrentEffectColor = !hasCurrentEffectColor;
-});
+key('c', function(){ hasCurrentEffectColor = !hasCurrentEffectColor; });
 
 // Draw the visuals
 function updateVisuals() {
@@ -778,91 +277,88 @@ function updateVisuals() {
 
   requestAnimationFrame(updateVisuals);
 
+  if(!audioSetup) return;
+  //console.log("updateVisuals(): Audio setup ok");
+
+  var bFrequencyData = new Uint8Array(audioAnalyser.frequencyBinCount);
+  //var fFrequencyData = new Float32Array(audioAnalyser.frequencyBinCount);
+  audioAnalyser.getByteFrequencyData(bFrequencyData);
+  //audioAnalyser.getFloatFrequencyData(fFrequencyData);
+
+  // Figure out the intensity of the moment
+  // XXX: This thing below should be an array but well the user don't care, later...
+  /*var lowIntensity = 0;
+  var midLowIntensity = 0;
+  var midHighIntensity = 0;
+  var highIntensity = 0;
+  var intensityGroupSize = audioAnalyser.frequencyBinCount / 4;*/
   var totalIntensity = 0;
-  var averageIntensity = 0;
 
-  if(audioSetup) {
-
-    var byteFrequencyData = new Uint8Array(audioAnalyser.frequencyBinCount);
-    audioAnalyser.getByteFrequencyData(byteFrequencyData);
-
-    // Figure out the intensity of the moment
-    //console.log(byteFrequencyData);
-    for(var i=0; i < audioAnalyser.frequencyBinCount; i++) {
-      totalIntensity += byteFrequencyData[i];
-    }
-
-    averageIntensity = totalIntensity / audioAnalyser.frequencyBinCount;
-    //console.log("updateVisuals() - Average intensity: " + averageIntensity);
-    /*console.log("updateVisuals()"
-      + " - Intensity: " + averageIntensity
-      + " - Reactive levels: ["
-      + (currentIntensityLevel1 + intensityLevelAdjustment) + ", "
-      + (currentIntensityLevel2 + intensityLevelAdjustment) + ", "
-      + (currentIntensityLevel2Alt + intensityLevelAdjustment) + ", "
-      + (currentIntensityLevel3 + intensityLevelAdjustment) + ", "
-      + (currentIntensityLevel3Alt + intensityLevelAdjustment)
-      + "]");*/
+  //console.log(bFrequencyData);
+  //console.log(fFrequencyData);
+  for(var i=0; i < audioAnalyser.frequencyBinCount; i++) {
+    /*if (i < audioAnalyser.frequencyBinCount / 4) {
+      lowIntensity += bFrequencyData[i];
+    } else if (i < (audioAnalyser.frequencyBinCount / 4) * 2) {
+      midLowIntensity += bFrequencyData[i];
+    } else if (i < (audioAnalyser.frequencyBinCount / 4) * 3) {
+      midHighIntensity += bFrequencyData[i];
+    } else {
+      highIntensity += bFrequencyData[i];
+    }*/
+    totalIntensity += bFrequencyData[i];
   }
 
-  // If visuals are still loading, we do not start displaying with the visuals
-  if(loadingVisuals) return;
-  //console.log("updateVisuals(): Visuals loaded");
+  //var totalIntensity = lowIntensity + midLowIntensity + midHighIntensity + highIntensity;
+  //console.log("updateVisuals(): Intensity: " + totalIntensity + " (Low: " + lowIntensity + " - Mid low: " + midLowIntensity + " - Midhigh: " + midHighIntensity + " - High: " + highIntensity + ")");
+  //console.log("updateVisuals() - Total intensity: " + totalIntensity);
+
+  var averageIntensity = totalIntensity / audioAnalyser.frequencyBinCount;
 
   // Current gif reaction is based on intensity.
   // Probably the wrong way to do it but that works for now.
   // Well, a hack is not a hack if it's perfect.
   // NB: If you set the background directly below using style.backgroundImage,
-  // it will not loop the same way as the current version weirdly let the gif
-  // flow even if it's not displayed for whichever reason. Hopefully this will
-  // keep working like that or we will have to use a layer for each intensity
-  // level most probably (that's one potential alternative solution)
-  if (averageIntensity > (currentIntensityLevel3Alt + intensityLevelAdjustment)) {
-    visualsElement.className = currentEffectTreatment + "-alt"
+  // it will not loop the same way and
+  if (averageIntensity > currentIntensityLevel3Alt) {
+    visualsElement.className = currentEffectName + "-alt"
     + ((hasCurrentEffectColor) ? "-color" : "")
     + " gif-" + currentGifForIntensityLevel3;
 
-  } else if (averageIntensity > (currentIntensityLevel3 + intensityLevelAdjustment)) {
-    visualsElement.className = currentEffectTreatment
+  } else if (averageIntensity > currentIntensityLevel3) {
+    visualsElement.className = currentEffectName
     + ((hasCurrentEffectColor) ? "-color" : "")
     + " gif-" + currentGifForIntensityLevel3;
 
-  // Removing the "alt" effect for middle-intensity visuals (too flashy for now)
-  /*} else if (averageIntensity > (currentIntensityLevel2Alt + intensityLevelAdjustment)) {
-    visualsElement.className = currentEffectTreatment + "-alt"
-    + ((hasCurrentEffectColor) ? "-color" : "")
-    + " gif-" + currentGifForIntensityLevel2;*/
-
-  } else if (averageIntensity > (currentIntensityLevel2 + intensityLevelAdjustment)) {
-    visualsElement.className = currentEffectTreatment
+  } else if (averageIntensity > currentIntensityLevel2Alt) {
+    visualsElement.className = currentEffectName + "-alt"
     + ((hasCurrentEffectColor) ? "-color" : "")
     + " gif-" + currentGifForIntensityLevel2;
 
-  } else if (averageIntensity > (currentIntensityLevel1 + intensityLevelAdjustment)) {
-    visualsElement.className = currentEffectTreatment
+  } else if (averageIntensity > currentIntensityLevel2) {
+    visualsElement.className = currentEffectName
+    + ((hasCurrentEffectColor) ? "-color" : "")
+    + " gif-" + currentGifForIntensityLevel2;
+
+  } else if (averageIntensity > currentIntensityLevel1) {
+    visualsElement.className = currentEffectName
     + ((hasCurrentEffectColor) ? "-color" : "")
     + " gif-" + currentGifForIntensityLevel1;
 
   } else {
-    visualsElement.className = currentEffectTreatment
+    visualsElement.className = currentEffectName
     + ((hasCurrentEffectColor) ? "-color" : "")
     + " gif-" + currentGifForNoIntensity;
   }
 }
 
 // Keyboard shortcut to enter/exit fullscreen
-var fullscreenButtonElement = document.getElementById("fullscreen");
-fullscreenButtonElement.addEventListener("click", function(){
-  //mixpanel.track("Click button 'fullscreen'");
-  toggleFullscreen();
-});
-key('f', function(){
-  //mixpanel.track("Press 'f' key");
-  toggleFullscreen();
-});
+var fullScreenElement = document.getElementById("full-screen");
+fullScreenElement.addEventListener("click", toggleFullScreen);
+key('f', function(){ toggleFullScreen(); });
 
 // Enter/exit fullscreen
-function toggleFullscreen() {
+function toggleFullScreen() {
 
   if (!document.fullscreenElement // alternative standard method
       // current working methods
@@ -871,61 +367,35 @@ function toggleFullscreen() {
       && !document.msFullscreenElement ) {
     if (document.documentElement.requestFullscreen) {
       document.documentElement.requestFullscreen();
+      fullScreenElement.dataset.state = "full-screen";
     } else if (document.documentElement.msRequestFullscreen) {
       document.documentElement.msRequestFullscreen();
+      fullScreenElement.dataset.state = "full-screen";
     } else if (document.documentElement.mozRequestFullScreen) {
       document.documentElement.mozRequestFullScreen();
+      fullScreenElement.dataset.state = "full-screen";
     } else if (document.documentElement.webkitRequestFullscreen) {
       document.documentElement.webkitRequestFullscreen(Element.ALLOW_KEYBOARD_INPUT);
+      fullScreenElement.dataset.state = "full-screen";
     }
   } else {
     if (document.exitFullscreen) {
       document.exitFullscreen();
+      fullScreenElement.dataset.state = "not-full-screen";
     } else if (document.msExitFullscreen) {
       document.msExitFullscreen();
+      fullScreenElement.dataset.state = "not-full-screen";
     } else if (document.mozCancelFullScreen) {
       document.mozCancelFullScreen();
+      fullScreenElement.dataset.state = "not-full-screen";
     } else if (document.webkitExitFullscreen) {
       document.webkitExitFullscreen();
+      fullScreenElement.dataset.state = "not-full-screen";
     }
   }
 }
 
-function handleFullscreenChange() {
-  //console.log(handleFullscreenChange());
-  var fullscreenElement = document.fullscreenElement || document.msFullscreenElement || document.mozFullScreenElement || document.webkitFullscreenElement;
-  //console.log(fullscreenElement);
-  if (fullscreenElement != null) {
-    //console.log("handleFullscreenChange(): fullscreen");
-    fullscreenButtonElement.dataset.state = "fullscreen";
-    //mixpanel.track("Fullscreen on'");
-  } else {
-    //console.log("handleFullscreenChange(): not fullscreen");
-    fullscreenButtonElement.dataset.state = "not-fullscreen";
-    //mixpanel.track("Fullscreen off'");
-  }
-}
-
-// Detect full screen change and act accordingly
-document.addEventListener("fullscreenchange", function (evt) {
-    //console.log("fullscreenchange event " + evt.target);
-    handleFullscreenChange();
-}, false);
-document.addEventListener("MSFullscreenChange", function (evt) {
-    //console.log("fullscreenchange event " + evt.target);
-    handleFullscreenChange();
-}, false);
-document.addEventListener("mozfullscreenchange", function (evt) {
-    //console.log("fullscreenchange event " + evt.target);
-    handleFullscreenChange();
-}, false);
-document.addEventListener("webkitfullscreenchange", function (evt) {
-    //console.log("fullscreenchange event " + evt.target);
-    handleFullscreenChange();
-}, false);
-
-// vh / vw Polyfill coz there are many browsers out there who are missing out
-// on that incredible unit system
+// vh / vw Polyfill
 // ----
 
 if (!Array.prototype.filter)

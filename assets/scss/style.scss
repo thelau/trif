@@ -1,0 +1,473 @@
+@import url(http://fonts.googleapis.com/css?family=Lato:700);
+
+// XXX: Using a variable because REM is not applying changes dynamically to the sizes in the subsequent elements
+$basicUnitSize: 1.75vmax;
+
+html {
+  background: black;
+}
+
+body {
+  color: white;
+  font-family: "Lato", "C64 Pro Mono Local", helvetica, verdana, sans-serif;
+  font-weight: 700;
+  font-size: $basicUnitSize;
+  letter-spacing: 2px;
+  line-height: 2em;
+
+  // Prevent user to select text
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
+
+a {
+  color: white;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+// Effects
+
+$defaultFilter: contrast(1.75) grayscale(100%);
+$defaultColorFilter: contrast(1.75) hue-rotate(22.5deg) saturate(200%);
+$defaultAltFilter: $defaultFilter invert(100%);
+$defaultAltColorFilter: $defaultColorFilter invert(100%);
+$technoFilter: $defaultFilter;
+$technoColorFilter: $defaultColorFilter;
+$technoAltFilter: $defaultAltFilter;
+$technoAltColorFilter: $defaultAltColorFilter;
+$dubstepFilter: $defaultFilter;
+$dubstepColorFilter: $defaultColorFilter;
+$dubstepAltFilter: $defaultAltFilter;
+$dubstepAltColorFilter: $defaultAltColorFilter;
+$tranceFilter: $defaultFilter;
+$tranceColorFilter: $defaultColorFilter;
+$tranceAltFilter: $defaultAltFilter;
+$tranceAltColorFilter: $defaultAltColorFilter;
+
+#visuals {
+  background-attachment: fixed;
+  background-position: center center;
+  background-repeat: no-repeat;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  bottom: 2 * $basicUnitSize;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100vw;
+  z-index: 0;
+  .scanlines {
+    $lineSize: 2px;
+    background: -webkit-repeating-linear-gradient(
+      top,
+      transparent 0px,
+      transparent $lineSize,
+      rgba(0, 0, 0, 0.15) $lineSize,
+      rgba(0, 0, 0, 0.15) $lineSize * 2
+    );
+    background: -moz-repeating-linear-gradient(
+      top,
+      transparent 0px,
+      transparent $lineSize,
+      rgba(0, 0, 0, 0.15) $lineSize,
+      rgba(0, 0, 0, 0.15) $lineSize * 2
+    );
+    -webkit-background-size: 100% $lineSize * 2;
+    -moz-background-size: 100% $lineSize * 2;
+    background-size: 100% $lineSize * 2;
+    // display: none; // Doesn't look good on mobile
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+  }
+}
+
+.techno {
+  -webkit-filter: $technoFilter!important;
+  filter: $technoFilter!important;
+}
+
+.techno-color {
+  -webkit-filter: $technoColorFilter!important;
+  filter: $technoColorFilter!important;
+}
+
+.techno-alt {
+  -webkit-filter: $technoAltFilter!important;
+  filter: $technoAltFilter!important;
+}
+
+.techno-alt-color {
+  -webkit-filter: $technoAltColorFilter!important;
+  filter: $technoAltColorFilter!important;
+}
+
+.dubstep {
+  -webkit-filter: $dubstepFilter!important;
+  filter: $dubstepFilter!important;
+}
+
+.dubstep-color {
+  -webkit-filter: $dubstepColorFilter!important;
+  filter: $dubstepColorFilter!important;
+}
+
+.dubstep-alt {
+  -webkit-filter: $dubstepAltFilter!important;
+  filter: $dubstepAltFilter!important;
+}
+
+.dubstep-alt-color {
+  -webkit-filter: $dubstepAltColorFilter!important;
+  filter: $dubstepAltColorFilter!important;
+}
+
+.trance {
+  -webkit-filter: $tranceFilter!important;
+  filter: $tranceFilter!important;
+}
+
+.trance-color {
+  -webkit-filter: $tranceColorFilter!important;
+  filter: $tranceColorFilter!important;
+}
+
+.trance-alt {
+  -webkit-filter: $tranceAltFilter!important;
+  filter: $tranceAltFilter!important;
+}
+
+.trance-alt-color {
+  -webkit-filter: $tranceAltColorFilter!important;
+  filter: $tranceAltColorFilter!important;
+}
+
+p#branding {
+  background-color: rgba(black, 0.15);
+  border: 0.2 * $basicUnitSize solid white;
+  bottom: 3 * $basicUnitSize;
+  box-sizing: border-box;
+  color: white;
+  height: 2 * $basicUnitSize;
+  line-height: 1.6 * $basicUnitSize;
+  margin: 0;
+  overflow: hidden;
+  position: absolute;
+  left: 2 * $basicUnitSize;
+  text-align: center;
+  width: 4 * $basicUnitSize;
+  z-index: 4;
+}
+
+p#controls {
+  bottom: 3 * $basicUnitSize;
+  height: 2 * $basicUnitSize;
+  left: 7 * $basicUnitSize;
+  margin: 0;
+  overflow: hidden;
+  position: absolute;
+  right: 2 * $basicUnitSize;
+  z-index: 3;
+  a {
+    bottom: 0;
+    line-height: 2 * $basicUnitSize;
+    height: 2 * $basicUnitSize;
+    overflow: hidden;
+    position: absolute;
+  }
+  a.button {
+    background-color: rgba(black, 0.15);
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+    background-size: 50% 50%;
+    border: 0.2 * $basicUnitSize solid white;
+    box-sizing: border-box;
+    width: 2 * $basicUnitSize!important;
+  }
+  a#play-pause {
+    left: 0;
+  }
+  a#play-pause[data-state='paused'] {
+    background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/152714/play-white.svg);
+  }
+  a#play-pause[data-state='playing'] {
+    background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/152714/pause-white.svg);
+  }
+  a#next {
+    background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/152714/next-white.svg);
+    left: 3 * $basicUnitSize;
+  }
+  a#now-playing {
+    left: 6 * $basicUnitSize;
+    right: 3 * $basicUnitSize;
+    text-align: left;
+    text-overflow: ellipsis;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+  a#full-screen {
+    right: 0;
+  }
+  // XXX: Temporary code - :fullscreen and cross browser syntax didn't work
+  // for whichever reason
+  a#full-screen[data-state='not-full-screen'] {
+    background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/152714/enter-full-screen-white.svg);
+  }
+  a#full-screen[data-state='full-screen'] {
+    background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/152714/exit-full-screen-white.svg);
+  }
+}
+
+p#about {
+  bottom: 0;
+  box-model: border-box;
+  color: white;
+  font-size: 0.45 * $basicUnitSize;
+  font-weight: 700;
+  left: 0;
+  line-height: 1 * $basicUnitSize;
+  height: 1 * $basicUnitSize;
+  margin: 0;
+  padding: 0.5 * $basicUnitSize 2 * $basicUnitSize;
+  overflow: hidden;
+  position: absolute;
+  right: 0;
+  text-transform: uppercase;
+  z-index: 3;
+
+  a {
+    color: white;
+    text-decoration: underline;
+  }
+}
+
+@media (orientation: portrait) {
+  // XXX: Using a variable because REM is not applying changes dynamically to the sizes in the subsequent elements
+  $basicUnitSize: 2.5vmax;
+
+  body {
+    font-size: $basicUnitSize;
+  }
+
+  #visuals {
+    bottom: 4 * $basicUnitSize;
+  }
+
+  p#branding {
+    border: 0.2 * $basicUnitSize solid white;
+    bottom: 5 * $basicUnitSize;
+    height: 2 * $basicUnitSize;
+    line-height: 1.6 * $basicUnitSize;
+    left: 2 * $basicUnitSize;
+    width: 4 * $basicUnitSize;
+  }
+
+  p#controls {
+    bottom: 5 * $basicUnitSize;
+    height: auto;
+    left: 7 * $basicUnitSize;
+    right: 2 * $basicUnitSize;
+    top: 2 * $basicUnitSize;
+    a {
+      bottom: 0;
+      line-height: 2 * $basicUnitSize;
+      height: 2 * $basicUnitSize;
+    }
+    a.button {
+      bottom: 0;
+      border: 0.2 * $basicUnitSize solid white;
+      width: 2 * $basicUnitSize!important;
+    }
+    a#next {
+      left: 3 * $basicUnitSize;
+    }
+    a#now-playing {
+      left: 6 * $basicUnitSize;
+      right: 0;
+    }
+    a#full-screen {
+      bottom: none; // XXX: Not sure how to cancel the bottom 0 from non media query
+      right: 0;
+      top: 0;
+    }
+  }
+
+  p#about {
+    bottom: 0;
+    font-size: 0.35 * $basicUnitSize;
+    line-height: 1 * $basicUnitSize;
+    height: 2 * $basicUnitSize;
+    padding: 1 * $basicUnitSize 2 * $basicUnitSize;
+  }
+}
+
+// GIFs
+
+.gif-walking-mickey {
+  background: url("https://s3-ap-southeast-1.amazonaws.com/gif-music-television/gif/walking-mickey.gif");
+}
+
+.gif-elephant {
+  background: url("https://s3-ap-southeast-1.amazonaws.com/gif-music-television/gif/elephant.gif");
+}
+
+.gif-road {
+  background: url("https://s3-ap-southeast-1.amazonaws.com/gif-music-television/gif/road.gif");
+}
+
+.gif-wind {
+  background: url("https://s3-ap-southeast-1.amazonaws.com/gif-music-television/gif/wind.gif");
+}
+
+.gif-squares {
+  background: url("https://s3-ap-southeast-1.amazonaws.com/gif-music-television/gif/squares.gif");
+}
+
+.gif-base-jumping {
+  background: url("https://s3-ap-southeast-1.amazonaws.com/gif-music-television/gif/base-jumping.gif");
+}
+
+.gif-electronic-heart {
+  background: url("https://s3-ap-southeast-1.amazonaws.com/gif-music-television/gif/electronic-heart.gif");
+}
+
+.gif-cube {
+  background: url("https://s3-ap-southeast-1.amazonaws.com/gif-music-television/gif/cube.gif");
+}
+
+.gif-3d-circle {
+  background: url("https://s3-ap-southeast-1.amazonaws.com/gif-music-television/gif/3d-circle.gif");
+}
+
+.gif-rotating-elements {
+  background: url("https://s3-ap-southeast-1.amazonaws.com/gif-music-television/gif/rotating-elements.gif");
+}
+
+.gif-jennifer-lopez {
+  background: url("https://s3-ap-southeast-1.amazonaws.com/gif-music-television/gif/jennifer-lopez.gif");
+}
+
+.gif-breakdancer {
+  background: url("https://s3-ap-southeast-1.amazonaws.com/gif-music-television/gif/breakdancer.gif");
+}
+
+.gif-simpsons {
+  background: url("https://s3-ap-southeast-1.amazonaws.com/gif-music-television/gif/simpsons.gif");
+}
+
+.gif-sperm {
+  background-image: url("https://s3-ap-southeast-1.amazonaws.com/gif-music-television/gif/sperm.gif");
+}
+
+.gif-heart {
+  background-image: url("https://s3-ap-southeast-1.amazonaws.com/gif-music-television/gif/heart.gif");
+}
+
+.gif-zebra {
+  background-image: url("https://s3-ap-southeast-1.amazonaws.com/gif-music-television/gif/zebra.gif");
+}
+
+.gif-3d-mirrors {
+  background-image: url("https://s3-ap-southeast-1.amazonaws.com/gif-music-television/gif/3d-mirrors.gif");
+}
+
+.gif-bmx {
+  background-image: url("https://s3-ap-southeast-1.amazonaws.com/gif-music-television/gif/bmx.gif");
+}
+
+.gif-3d-triangles {
+  background-image: url("https://s3-ap-southeast-1.amazonaws.com/gif-music-television/gif/3d-triangles.gif");
+}
+
+.gif-run {
+  background-image: url("https://s3-ap-southeast-1.amazonaws.com/gif-music-television/gif/run.gif");
+}
+
+.gif-kidmograph-2 {
+  background-image: url("https://s3-ap-southeast-1.amazonaws.com/gif-music-television/gif/kidmograph-2.gif");
+}
+
+.gif-reagan {
+  background-image: url("https://s3-ap-southeast-1.amazonaws.com/gif-music-television/gif/reagan.gif");
+}
+
+.gif-kidmograph {
+  background-image: url("https://s3-ap-southeast-1.amazonaws.com/gif-music-television/gif/kidmograph.gif");
+}
+
+.gif-crossing-eyes {
+  background-image: url("https://s3-ap-southeast-1.amazonaws.com/gif-music-television/gif/crossing-eyes.gif");
+}
+
+.gif-biology {
+  background-image: url("https://s3-ap-southeast-1.amazonaws.com/gif-music-television/gif/biology.gif");
+}
+
+.gif-urchin {
+  background-image: url("https://s3-ap-southeast-1.amazonaws.com/gif-music-television/gif/urchin.gif");
+}
+
+.gif-human-body {
+  background-image: url("https://s3-ap-southeast-1.amazonaws.com/gif-music-television/gif/human-body.gif");
+}
+
+.gif-random-shapes {
+  background-image: url("https://s3-ap-southeast-1.amazonaws.com/gif-music-television/gif/random-shapes.gif");
+}
+
+.gif-shapes-tunnel {
+  background-image: url("https://s3-ap-southeast-1.amazonaws.com/gif-music-television/gif/shapes-tunnel.gif");
+}
+
+.gif-cubes {
+  background-image: url("https://s3-ap-southeast-1.amazonaws.com/gif-music-television/gif/cubes.gif");
+}
+
+.gif-dolphins {
+  background-image: url("https://s3-ap-southeast-1.amazonaws.com/gif-music-television/gif/dolphins.gif");
+}
+
+.gif-laser {
+  background-image: url("https://s3-ap-southeast-1.amazonaws.com/gif-music-television/gif/laser.gif");
+}
+
+.gif-flashing-wall {
+  background-image: url("https://s3-ap-southeast-1.amazonaws.com/gif-music-television/gif/flashing-wall.gif");
+}
+
+.gif-abstract-geometry {
+  background-image: url("https://s3-ap-southeast-1.amazonaws.com/gif-music-television/gif/abstract-geometry.gif");
+}
+
+.gif-abstract-art-loop {
+  background-image: url("https://s3-ap-southeast-1.amazonaws.com/gif-music-television/gif/abstract-art-loop.gif");
+}
+
+.gif-small-abstract-rectangles {
+  background-image: url("https://s3-ap-southeast-1.amazonaws.com/gif-music-television/gif/small-abstract-rectangles.gif");
+}
+
+.gif-trippy-abstract {
+  background-image: url("https://s3-ap-southeast-1.amazonaws.com/gif-music-television/gif/trippy-abstract.gif");
+}
+
+.gif-abstract-rainbow-3 {
+  background-image: url("https://s3-ap-southeast-1.amazonaws.com/gif-music-television/gif/abstract-rainbow-3.gif");
+}
+
+.gif-abstract-rainbow-4 {
+  background-image: url("https://s3-ap-southeast-1.amazonaws.com/gif-music-television/gif/abstract-rainbow-4.gif");
+}
