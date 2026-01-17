@@ -233,28 +233,9 @@ var loadingVisuals = false;
 // Tools & Utilities functions
 var isBrowserIncompatible = false;
 
-// Detect mobile
-// Script from Cory LaViska
-// http://www.abeautifulsite.net/detecting-mobile-devices-with-javascript/
-var isMobile = {
-  Android: function () {
-    return navigator.userAgent.match(/Android/i);
-  },
-  BlackBerry: function () {
-    return navigator.userAgent.match(/BlackBerry|BB10; Touch/i);
-  },
-  iOS: function () {
-    return navigator.userAgent.match(/iPhone|iPad|iPod/i);
-  },
-  Opera: function () {
-    return navigator.userAgent.match(/Opera Mini/i);
-  },
-  Windows: function () {
-    return navigator.userAgent.match(/IEMobile/i);
-  },
-  any: function () {
-    return (isMobile.Android() || isMobile.BlackBerry() || isMobile.iOS() || isMobile.Opera() || isMobile.Windows());
-  }
+// Detect Web Audio API support
+var hasWebAudio = function () {
+  return !!(window.AudioContext || window.webkitAudioContext);
 };
 
 // Detect if it's Chrome
@@ -266,17 +247,10 @@ var isChrome = function () {
 function init() {
   //console.log("in init");
 
-  // Test if mobile
-  if (isMobile.any()) {
-    var incompatibleMobileElement = document.getElementById("incompatible-mobile");
-    incompatibleMobileElement.style.display = "block";
-    isBrowserIncompatible = true;
-
-    // Test for other incompatible browsers (for now, all of them but Chrome
-    // and Chrome Canary)
-  } else if (!isChrome()) {
-    var incompatibleDesktopElement = document.getElementById("incompatible-desktop");
-    incompatibleDesktopElement.style.display = "block";
+  // Test for Web Audio API support
+  if (!hasWebAudio()) {
+    var incompatibleElement = document.getElementById("incompatible-desktop");
+    incompatibleElement.style.display = "block";
     isBrowserIncompatible = true;
   }
 

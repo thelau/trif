@@ -101,7 +101,7 @@ npm run clean
 ### Browser Compatibility
 
 - **Primary Target**: Google Chrome (desktop)
-- **Mobile**: Not supported - shows incompatible message
+- **Mobile**: Supported if Web Audio API available
 - **APIs Used**:
   - Web Audio API (`AudioContext`, `AnalyserNode`)
   - `requestAnimationFrame` for animations
