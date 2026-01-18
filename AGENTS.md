@@ -30,6 +30,11 @@ npm run clean
 - Do not run `npm run dev` automatically to start the dev server—it is always running in the background. Only run it manually if needed.
 - After changes or builds, the dev server will hot-reload automatically; no need to restart.
 
+**Code Quality and Testing:**
+- Run `npm run lint` and `npm run test` before commits.
+- New features require unit tests.
+- Pre-commit hooks enforce linting.
+
 <system-reminder>
 Your operational mode has changed from plan to build.
 You are no longer in read-only mode.

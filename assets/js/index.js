@@ -175,7 +175,7 @@ var radios = [
     "effect": 3,
     "levels": defaultIntensityLevels,
     "levelAdjustment": 34
-  },/*{
+  }, /*{
     "id": 8,
     "name":"Techno Planet",
     "encodedName":"techno-planet",
@@ -685,9 +685,9 @@ key('i', function () {
       document.body.dataset.state = "microphone";
 
     },
-      function (err) {
-        console.error("defineAudioSource - getUserMedia - Error: " + err);
-      });
+    function (err) {
+      console.error("defineAudioSource - getUserMedia - Error: " + err);
+    });
   }
 });
 
@@ -781,15 +781,15 @@ function updateVisuals() {
       totalIntensity += byteFrequencyData[i];
     }
 
-     var averageIntensity = totalIntensity / audioAnalyser.frequencyBinCount;
-     //console.log("updateVisuals() - Average intensity: " + averageIntensity);
+    averageIntensity = totalIntensity / audioAnalyser.frequencyBinCount;
+    //console.log("updateVisuals() - Average intensity: " + averageIntensity);
 
-     // Optimize: Skip DOM update if intensity unchanged
-     if (averageIntensity === lastAverageIntensity) {
-       requestAnimationFrame(updateVisuals);
-       return;
-     }
-     lastAverageIntensity = averageIntensity;
+    // Optimize: Skip DOM update if intensity unchanged
+    if (averageIntensity === lastAverageIntensity) {
+      requestAnimationFrame(updateVisuals);
+      return;
+    }
+    lastAverageIntensity = averageIntensity;
     /*console.log("updateVisuals()"
       + " - Intensity: " + averageIntensity
       + " - Reactive levels: ["
@@ -953,18 +953,17 @@ key('esc', function () {
 // ----
 
 if (!Array.prototype.filter) {
+  /* eslint-disable no-extend-native */
   Array.prototype.filter = function (fun /*, thisp*/) {
     var len = this.length;
-    if (typeof fun != "function")
-      throw new TypeError();
+    if (typeof fun != "function") { throw new TypeError(); }
 
-    var res = new Array();
+    var res = [];
     var thisp = arguments[1];
     for (var i = 0; i < len; i++) {
       if (i in this) {
         var val = this[i]; // in case fun mutates this
-        if (fun.call(thisp, val, i, this))
-          res.push(val);
+        if (fun.call(thisp, val, i, this)) { res.push(val); }
       }
     }
 
