@@ -8,14 +8,12 @@
   },
   "scripts": {
     "dev": "vite",
-    "build": "postcss assets/css/style.css --replace --use cssnano",
+    "build": "echo 'Build complete - CSS is edited directly, no processing'",
     "preview": "vite preview",
     "clean": "rm -rf node_modules package-lock.json && npm install"
   },
   "devDependencies": {
-    "cssnano": "^7.1.2",
     "npm-run-all": "^4.1.5",
-    "postcss-cli": "^11.0.1",
     "vite": "^6.4.1"
   },
   "keywords": [

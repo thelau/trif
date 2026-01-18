@@ -781,7 +781,7 @@ function updateVisuals() {
       totalIntensity += byteFrequencyData[i];
     }
 
-     averageIntensity = totalIntensity / audioAnalyser.frequencyBinCount;
+     var averageIntensity = totalIntensity / audioAnalyser.frequencyBinCount;
      //console.log("updateVisuals() - Average intensity: " + averageIntensity);
 
      // Optimize: Skip DOM update if intensity unchanged
@@ -919,6 +919,34 @@ document.addEventListener("webkitfullscreenchange", function (evt) {
   //console.log("fullscreenchange event " + evt.target);
   handleFullscreenChange();
 }, false);
+
+// Help panel functions
+function toggleHelpPanel() {
+  var body = document.body;
+  var overlay = document.getElementById("help-overlay");
+  if (body.classList.contains("help")) {
+    hideHelpPanel();
+  } else {
+    console.log("Help panel toggled");
+    body.classList.add("help");
+    overlay.style.display = "block";
+  }
+}
+
+function hideHelpPanel() {
+  var body = document.body;
+  var overlay = document.getElementById("help-overlay");
+  body.classList.remove("help");
+  overlay.style.display = "none";
+}
+
+// Key bindings for help
+key('h', function () {
+  toggleHelpPanel();
+});
+key('esc', function () {
+  hideHelpPanel();
+});
 
 // vh / vw Polyfill coz there are many browsers out there who are missing out
 // on that incredible unit system
