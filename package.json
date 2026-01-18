@@ -14,7 +14,7 @@
     "lint": "eslint --config .config/.eslintrc.cjs assets/js/index.js && stylelint --config .config/.stylelintrc.cjs assets/css/style.css",
     "lint:fix": "eslint --config .config/.eslintrc.cjs --fix assets/js/index.js && stylelint --config .config/.stylelintrc.cjs --fix assets/css/style.css",
     "test": "jest --passWithNoTests",
-    "audit": "npx lighthouse http://localhost:4173 --output=json --output-path=./reports/lighthouse-report.json --only-categories=performance,accessibility,best-practices,seo --chrome-flags=\"--headless --no-sandbox --disable-dev-shm-usage\"",
+    "audit": "lighthouse-ci http://localhost:4173 --performance=80 --best-practices=90",
     "clean": "rm -rf node_modules package-lock.json && npm install",
     "prepare": "husky"
   },
