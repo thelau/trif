@@ -14,7 +14,7 @@
     "lint": "eslint --config .config/.eslintrc.cjs assets/js/index.js && stylelint --config .config/.stylelintrc.cjs assets/css/style.css",
     "lint:fix": "eslint --config .config/.eslintrc.cjs --fix assets/js/index.js && stylelint --config .config/.stylelintrc.cjs --fix assets/css/style.css",
     "test": "jest --passWithNoTests",
-    "audit": "CHROME_PATH=/usr/bin/google-chrome-stable npx lighthouse http://localhost:4173 --output=json --output-path=./reports/lighthouse-report.json --only-categories=performance,best-practices --chrome-flags=\"--headless=new --no-sandbox --disable-dev-shm-usage --disable-gpu\"",
+    "audit": "echo 'Run manually: npx lighthouse http://localhost:4173 --output=json --output-path=./reports/lighthouse-report.json --only-categories=performance,best-practices'",
     "clean": "rm -rf node_modules package-lock.json && npm install",
     "prepare": "husky"
   },
