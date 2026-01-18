@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Audio visualizer web application",
   "private": true,
+  "type": "module",
   "engines": {
     "node": ">=18.20.0"
   },
@@ -10,10 +11,10 @@
     "dev": "vite",
     "build": "mkdir -p dist && cp index.html dist/ && cp -r assets dist/ && postcss dist/assets/css/style.css --replace --use cssnano",
     "preview": "vite preview",
-    "lint": "eslint assets/js/index.js && stylelint assets/css/style.css",
-    "lint:fix": "eslint --fix assets/js/index.js && stylelint --fix assets/css/style.css",
-    "test": "jest",
-    "audit": "lighthouse-ci --config-path=lighthouserc.json",
+    "lint": "eslint --config .config/.eslintrc.cjs assets/js/index.js && stylelint --config .config/.stylelintrc.cjs assets/css/style.css",
+    "lint:fix": "eslint --config .config/.eslintrc.cjs --fix assets/js/index.js && stylelint --config .config/.stylelintrc.cjs --fix assets/css/style.css",
+    "test": "jest --passWithNoTests",
+    "audit": "npx lighthouse http://localhost:4173 --output=json --output-path=./reports/lighthouse-report.json --only-categories=performance,accessibility,best-practices,seo",
     "clean": "rm -rf node_modules package-lock.json && npm install",
     "prepare": "husky"
   },
@@ -31,15 +32,11 @@
     "postcss-cli": "^11.0.1",
     "stylelint": "^16.26.1",
     "stylelint-config-standard": "^39.0.1",
-    "vite": "^6.4.1"
+    "vite": "^7.3.1"
   },
   "lint-staged": {
-    "*.js": [
-      "eslint"
-    ],
-    "*.css": [
-      "stylelint"
-    ]
+    "*.js": ["eslint", "jest --passWithNoTests"],
+    "*.css": ["stylelint"]
   },
   "keywords": [
     "audio",

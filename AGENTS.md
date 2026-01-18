@@ -98,12 +98,19 @@ A plan file exists at {{plan}}. You should read this file and execute on the pla
 ```
 /
 ├── index.html                 # Main HTML file
-├── package.json              # Dependencies and project info
-├── AGENTS.md               # Agent guidelines
+├── .config/                  # Development configs (ESLint, Stylelint, Jest)
+├── .github/                 # CI/CD workflows
+├── .husky/                  # Pre-commit hooks
+├── docs/                    # Documentation (AWS policies)
+├── reports/                 # Generated reports (Lighthouse)
+├── package.json             # Dependencies and project info
+├── AGENTS.md                # Agent guidelines
+├── lighthouserc.json        # Lighthouse audit config
+├── vite.config.js           # Vite build config
+├── index.html               # Main HTML file
 ├── assets/
 │   ├── css/
-│   │   ├── style.css        # Main stylesheet (edited directly)
-│   │   └── normalize.css   # CSS reset
+│   │   └── style.css        # Main stylesheet (edited directly)
 │   ├── js/
 │   │   ├── index.js        # Main application logic
 │   │   └── [other libs]   # PxLoader, keymaster, preloadjs
