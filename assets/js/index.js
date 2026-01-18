@@ -781,7 +781,7 @@ function updateVisuals() {
       totalIntensity += byteFrequencyData[i];
     }
 
-    var averageIntensity = totalIntensity / audioAnalyser.frequencyBinCount;
+    averageIntensity = totalIntensity / audioAnalyser.frequencyBinCount;
     //console.log("updateVisuals() - Average intensity: " + averageIntensity);
 
     // Optimize: Skip DOM update if intensity unchanged
@@ -953,11 +953,12 @@ key('esc', function () {
 // ----
 
 if (!Array.prototype.filter) {
+  /* eslint-disable no-extend-native */
   Array.prototype.filter = function (fun /*, thisp*/) {
     var len = this.length;
     if (typeof fun != "function") { throw new TypeError(); }
 
-    var res = new Array();
+    var res = [];
     var thisp = arguments[1];
     for (var i = 0; i < len; i++) {
       if (i in this) {
