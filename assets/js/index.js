@@ -65,6 +65,8 @@ var effects = [
     "color": false
   }
 ];
+var lastAverageIntensity = 0;
+var lastUpdate = 0;
 var currentEffectId;
 var currentEffectTreatment;
 var hasCurrentEffectColor = false;
@@ -756,6 +758,13 @@ key('c', function () {
 function updateVisuals() {
   //console.log("updateVisuals()");
 
+  // Throttle to ~30fps to reduce CPU load
+  if (Date.now() - lastUpdate < 33) {
+    requestAnimationFrame(updateVisuals);
+    return;
+  }
+  lastUpdate = Date.now();
+
   requestAnimationFrame(updateVisuals);
 
   var totalIntensity = 0;
@@ -772,8 +781,15 @@ function updateVisuals() {
       totalIntensity += byteFrequencyData[i];
     }
 
-    averageIntensity = totalIntensity / audioAnalyser.frequencyBinCount;
-    //console.log("updateVisuals() - Average intensity: " + averageIntensity);
+     averageIntensity = totalIntensity / audioAnalyser.frequencyBinCount;
+     //console.log("updateVisuals() - Average intensity: " + averageIntensity);
+
+     // Optimize: Skip DOM update if intensity unchanged
+     if (averageIntensity === lastAverageIntensity) {
+       requestAnimationFrame(updateVisuals);
+       return;
+     }
+     lastAverageIntensity = averageIntensity;
     /*console.log("updateVisuals()"
       + " - Intensity: " + averageIntensity
       + " - Reactive levels: ["
