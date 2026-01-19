@@ -17,8 +17,8 @@
     "url": "https://dubstep.fm/",
     "stream": "https://streams.ilovemusic.de/iloveradio17.mp3",
     "effect": 1,
-    "levels": [0, 120, 150, 175, 190],
-    "levelAdjustment": 22,
+    "levels": [0, 120, 150, 170, 185],
+    "levelAdjustment": 0,
     "status": "confirmed"
   }
 ]
