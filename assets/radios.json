@@ -92,8 +92,19 @@
     "name": "__BIGCITYBEATS.FM__ by rautemusik (rm.fm)",
     "encodedName": "bigcitybeats-fm-by-rautemusik-rm-fm",
     "url": "https://rautemusik.fm/",
-    "stream": "https://bigcity-high.rautemusik.fm/?ref=radiobrowser",
+    "stream": "https://stream.bigcitybeats.de/bcb-radio/mp3-192/radiobrowser",
     "effect": 1,
+    "levels": [0, 120, 150, 170, 185],
+    "levelAdjustment": 0,
+    "status": "confirmed"
+  },
+  {
+    "id": 9,
+    "name": "__TECHHOUSE__ by rautemusik (rm.fm)",
+    "encodedName": "techhouse-by-rautemusik-rm-fm",
+    "url": "https://rautemusik.fm/",
+    "stream": "https://techhouse-high.rautemusik.fm/?ref=radiobrowser",
+    "effect": 0,
     "levels": [0, 120, 150, 170, 185],
     "levelAdjustment": 0,
     "status": "confirmed"

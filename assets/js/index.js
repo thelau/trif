@@ -63,7 +63,7 @@ var effects = [
       ["audrey-tautou-2", "lips", "audrey-hepburn-3", "audrey-hepburn-1", "zooey-deschanel", "wonder-woman-2", "uma-thurman-3", "uma-thurman-2", "uma-thurman-1", "taylor-swift-2", "smoking-model", "rihanna-7", "rihanna-3", "rihanna-2", "olivia-wilde", "natalie-portman-4", "natalie-portman-2", "nail-art", "monica-bellucci-4", "makeup", "madonna-3", "lady-gaga-12", "lady-gaga-11", "lady-gaga-10", "lady-gaga-9", "lady-gaga-7", "kristen-dunst", "kate-moss", "judy-garland-1", "janelle-monae", "janelle-monae-2", "indonesia", "grace-kelly-1", "glitch-80s", "friendship", "fashion-8", "fashion-7", "fashion-5", "fashion-3", "fashion-1", "emma-stone-1", "destinys-child", "demi-lovato", "beyonce-5", "asian-woman-1", "1940s-woman", "1930s-woman"]],
     "treatment": "default",
     "color": false
-  }
+   }
 ];
 var isDev = window.location.hostname === 'localhost' || window.location.port === '4000';
 var lastAverageIntensity = 0;
@@ -103,8 +103,7 @@ var inputAudioStream;
 var isInputAudioActive = false;
 
 // Radios to play
-
-var defaultRadioId = 0;
+var defaultRadioId = 2;
 var radios = [];
 var currentRadioIndex = 0;
 var currentLoader = null;
