@@ -606,14 +606,14 @@ key('i', function () {
 });
 
 // =/- to adjust intensity level detection
-key('=', function(){
+key('=', function() {
   //mixpanel.track("Press '=' key");
   intensityLevelAdjustment += 0.5;
   if (isDev) {
     console.log("Intensity level adjustment increased to:", intensityLevelAdjustment);
   }
 });
-key('-', function(){
+key('-', function() {
   //mixpanel.track("Press '-' key");
   intensityLevelAdjustment -= 0.5;
   if (isDev) {
