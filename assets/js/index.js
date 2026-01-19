@@ -79,7 +79,7 @@ var timeoutRandomizingVisuals;
 var timeoutTimeRandomizingVisuals = 15000; // Changing visuals at max every X ms
 
 // Intensity levels
-var defaultIntensityLevels = [0, 100, 127.5, 140, 155];
+var defaultIntensityLevels = [0, 120, 150, 170, 185];
 //var defaultIntensityLevels = [0, 132.5, 150, 162.5, 177.5];
 var currentIntensityLevel1;
 var currentIntensityLevel2;
@@ -606,10 +606,19 @@ key('i', function () {
 });
 
 // =/- to adjust intensity level detection
-key('=', function () {
+key('=', function(){
   //mixpanel.track("Press '=' key");
   intensityLevelAdjustment += 0.5;
-  //console.log("Intensity level adjustment: " + intensityLevelAdjustment);
+  if (isDev) {
+    console.log("Intensity level adjustment increased to:", intensityLevelAdjustment);
+  }
+});
+key('-', function(){
+  //mixpanel.track("Press '-' key");
+  intensityLevelAdjustment -= 0.5;
+  if (isDev) {
+    console.log("Intensity level adjustment decreased to:", intensityLevelAdjustment);
+  }
 });
 key('-', function () {
   //mixpanel.track("Press '-' key");
