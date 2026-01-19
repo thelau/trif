@@ -25,6 +25,9 @@ npm run clean
 - Do not push code to the main branch until confirmed working locally.
 - If working in a feature branch, you can add, commit, and push under that branch for PR review.
 
+## TRIF Classic Concept
+TRIF Classic is the current version (v1.0), preserved on classic.trif.it after the new version is confirmed. It includes the original GIF-based audio visualizer with radio streams, basic controls, and analytics.
+
 ## Completed
 - Performance optimizations (throttling, CSS hints, Lighthouse audits)
 - Enhanced UX (help panel with keyboard shortcuts)
@@ -32,16 +35,15 @@ npm run clean
 - Mobile support (Web Audio API detection)
 - Deployment automation (S3/CloudFront)
 - Radio management (JSON extraction, status, index-based navigation, default visuals)
+- Add new radio streams (4 more for variety) ✅
+- Create radio test page for dev testing ✅
 
 ## Backlog
-- Add new radio streams (4 more for variety)
-- Create radio test page for dev testing
-- PWA features (service worker, manifest)
-- Accessibility improvements (ARIA labels)
-- Customization/Themes
-- Mobile enhancements
-- Figure out proper logging system (low priority)
-- Add tests for dev/preview (TBD)
+1. Brainstorm/Prototype New TRIF Concept (High Priority): Define vision (WebGL/video, monetization, mobile)—prototype on new.trif.it subdomain.
+2. Build New TRIF Base (High Priority): Implement based on brainstorm on new.trif.it (details TBD).
+3. Implement Key Experience Tests (High Priority): Add blocking tests for new.trif.it.
+4. Swap Versions (High Priority): Once new is ready, move current to classic.trif.it, new to main trif.it, update links/analytics/SEO.
+5. Features Backlog (Lower Priority): Control panel, PWA, accessibility, mobile enhancements, themes—brainstorm and add as needed.
 
 ## Code Style
 
