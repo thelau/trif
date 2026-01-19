@@ -40,7 +40,7 @@
     "stream": "https://streams.rautemusik.fm/techno/mp3-192/?ref=radiobrowser",
     "effect": 0,
     "levels": [0, 120, 150, 170, 185],
-    "levelAdjustment": -25,
+    "levelAdjustment": -22.5,
     "status": "confirmed"
   },
   {
