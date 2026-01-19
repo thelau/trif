@@ -9,5 +9,16 @@
     "levels": [0, 100, 127.5, 140, 155],
     "levelAdjustment": 34,
     "status": "confirmed"
+  },
+  {
+    "id": 1,
+    "name": "Dubstep.fm",
+    "encodedName": "dubstep-fm",
+    "url": "https://dubstep.fm/",
+    "stream": "https://streams.ilovemusic.de/iloveradio17.mp3",
+    "effect": 1,
+    "levels": [0, 100, 127.5, 140, 155],
+    "levelAdjustment": 22,
+    "status": "confirmed"
   }
 ]
