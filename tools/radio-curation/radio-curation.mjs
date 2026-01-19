@@ -14,24 +14,46 @@ const genres = ['undergroundtechno', 'hardtechno', 'jungle', 'neurofunk'];
 console.log('Fetching radio stations from public API...');
 
 // Try fetching from a free radio API (radio-browser.info)
-const apiUrl = 'https://de1.api.radio-browser.info/json/stations/search?tag=techno&limit=10';
+const apiUrls = [
+  'https://de1.api.radio-browser.info/json/stations/search?tag=techno&limit=10',
+  'https://de1.api.radio-browser.info/json/stations/search?tag=electronic&limit=10',
+  'https://de1.api.radio-browser.info/json/stations/search?tag=dance&limit=10'
+];
 
-exec(`curl -s "${apiUrl}"`, (error, stdout, stderr) => {
-  let candidates = [];
+// Fetch from multiple URLs and combine
+let allStations = [];
+let fetchPromises = apiUrls.map(url =>
+  new Promise((resolve) => {
+    exec(`curl -s "${url}"`, (error, stdout) => {
+      if (!error && stdout) {
+        try {
+          const stations = JSON.parse(stdout);
+          resolve(stations);
+        } catch (err) {
+          console.error('Error parsing response for', url, err);
+          resolve([]);
+        }
+      } else {
+        resolve([]);
+      }
+    });
+  })
+);
 
-  if (!error && stdout) {
-    try {
-      const stations = JSON.parse(stdout);
-      candidates = stations.slice(0, 4).map(station => ({
-        name: station.name,
-        stream: station.url_resolved || station.url,
-        key: station.tags ? station.tags.split(',')[0] : 'unknown'
-      }));
-      console.log(`Fetched ${candidates.length} candidates from API`);
-    } catch (err) {
-      console.error('Error parsing API response:', err);
-    }
-  }
+Promise.all(fetchPromises).then((results) => {
+  results.forEach(stations => allStations.push(...stations));
+  // Remove duplicates and limit to 20 unique
+  const uniqueStations = Array.from(new Set(allStations.map(s => s.url_resolved || s.url)))
+    .map(url => allStations.find(s => (s.url_resolved || s.url) === url))
+    .slice(0, 20);
+
+  let candidates = uniqueStations.map(station => ({
+    name: station.name,
+    stream: station.url_resolved || station.url,
+    key: station.tags ? station.tags.split(',')[0] : 'unknown'
+  }));
+
+  console.log(`Fetched ${candidates.length} candidates from API`);
 
   if (candidates.length === 0) {
     // Fallback
@@ -46,4 +68,6 @@ exec(`curl -s "${apiUrl}"`, (error, stdout, stderr) => {
 
   fs.writeFileSync(outputFile, JSON.stringify(candidates, null, 2));
   console.log('Saved candidates to ' + outputFile);
+}).catch((err) => {
+  console.error('Error in fetching:', err);
 });
