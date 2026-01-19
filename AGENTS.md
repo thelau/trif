@@ -25,6 +25,9 @@ npm run clean
 - Do not push code to the main branch until confirmed working locally.
 - If working in a feature branch, you can add, commit, and push under that branch for PR review.
 
+## Backlog
+- Figure out proper logging system (low priority).
+
 ## Code Style
 
 ### JavaScript
