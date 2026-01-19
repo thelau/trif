@@ -41,6 +41,7 @@ npm run clean
 - Customization/Themes
 - Mobile enhancements
 - Figure out proper logging system (low priority)
+- Add tests for dev/preview (TBD)
 
 ## Code Style
 
