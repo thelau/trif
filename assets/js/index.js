@@ -102,127 +102,18 @@ var inputAudioStream;
 var isInputAudioActive = false;
 
 // Radios to play
-var radios = [
-  /*{
-    "id": 0,
-    "name":"sunshine live - Techno",
-    "encodedName":"sunshine-live-techno",
-    "url":"https://www.sunshine-live.de/",
-    "stream":"https://sunshinelive.hoerradar.de/sunshinelive-techno-mp3-mq?sABC=5r5243p1%230%23ps8oo70oq3or323p658537250n3r07p9%23enqvbqr&amsparams=playerid:radiode;skey:1582449601",
-    "effect":0,
-    "levels":defaultIntensityLevels,
-    "levelAdjustment":12
-  },{
-    "id": 1,
-    "name":"DubTerrain",
-    "encodedName":"dubterrain",
-    "url":"http://www.dubterrain.net/",
-    "stream":"http://ic2255.c471.fast-serv.com:80/autodj",
-    "effect":1,
-    "levels":defaultIntensityLevels,
-    "levelAdjustment":22
-  },{
-    "id": 2,
-    "name":"minimalmix radio",
-    "encodedName":"minimalmix-radio",
-    "url":"http://minimalmix.com/",
-    "stream":"http://5.39.71.159:8750/stream/1/",
-    "effect":0,
-    "levels":defaultIntensityLevels,
-    "levelAdjustment":27
-  },{
-    "id": 3,
-    "name":"Sound Of Berlin",
-    "encodedName":"sound-of-berlin",
-    "url":"http://www.fluxfm.de/",
-    "stream":"https://sec-fluxfm.hoerradar.de/flux-berlinsound-mp3-hq?sABC=5r524p1o%230%23ps8oo70oq3or323p658537250n3r07p9%23enqvbqr&amsparams=playerid:radiode;skey:1582451739",
-    "effect":0,
-    "levels":defaultIntensityLevels,
-    "levelAdjustment":28
-  },{
-    "id": 4,
-    "name":"Futuredrumz Radio",
-    "encodedName":"futuredrumz-radio",
-    "url":"http://futuredrumz.com/",
-    "stream":"http://5.39.71.159:8625/stream/1/",
-    "effect":2,
-    "levels":defaultIntensityLevels,
-    "levelAdjustment":7,
-  }/{
-    "id": 0,
-    "name":"Cosmosradio",
-    "encodedName":"cosmosradio",
-    "url":"https://www.cosmosradio.de/",
-    "stream":"https://server33829.streamplus.de/stream/1/",
-    "effect":0,
-    "levels":defaultIntensityLevels,
-    "levelAdjustment":27
-  },*/{
-    "id": 0,
-    "name": "Traxx.FM Tech-Minimal",
-    "encodedName": "traxx-fm-tech-minimal",
-    "url": "http://www.traxx.fm/",
-    "stream": "https://traxx020.ice.infomaniak.ch/traxx020-low.mp3",
-    "effect": 0,
-    "levels": defaultIntensityLevels,
-    "levelAdjustment": 27
-  }, {
-    "id": 1,
-    "name": "BOM Psytrance Radio",
-    "encodedName": "bom-psytrance-radio",
-    "url": "http://www.1.fm/",
-    "stream": "http://strm112.1.fm/psytrance_mobile_mp3",
-    "effect": 3,
-    "levels": defaultIntensityLevels,
-    "levelAdjustment": 34
-  }, /*{
-    "id": 8,
-    "name":"Techno Planet",
-    "encodedName":"techno-planet",
-    "url":"http://technoplanet.live/",
-    "stream":"http://hyades.shoutca.st:8809/stream/1/",
-    "effect":0,
-    "levels":defaultIntensityLevels,
-    "levelAdjustment":27
-  },{
-    "id": 3,
-    "name":"PsyStation - Full On Psy Trance",
-    "encodedName":"psystation-full-on-psy-trance",
-    "url":"http://www.psystation.com/",
-    "stream":"https://hestia2.cdnstream.com/1455_128",
-    "effect":3,
-    "levels":defaultIntensityLevels,
-    "levelAdjustment":34
-  },{
-    "id": 10,
-    "name":"RAVELINEfm TECHNO RADIO",
-    "encodedName":"ravelinefm-techno-radio",
-    "url":"http://www.raveline.be/",
-    "stream":"https://listen.radioking.com/radio/256432/stream/301039",
-    "effect":0,
-    "levels":defaultIntensityLevels,
-    "levelAdjustment":27
-  },{
-    "id": 11,
-    "name":"Radio Record Techno",
-    "encodedName":"radio-record-techno",
-    "url":"https://www.radiorecord.ru/",
-    "stream":"http://air.radiorecord.ru:805/techno_128",
-    "effect":0,
-    "levels":defaultIntensityLevels,
-    "levelAdjustment":27
-  },{
-    "id": ,
-    "name":"test",
-    "encodedName":"test",
-    "url":"",
-    "stream":"",
-    "effect":0,
-    "levels":defaultIntensityLevels,
-    "levelAdjustment":27
-  }*/
-];
+
 var defaultRadioId = 0;
+var radios = [];
+var currentRadioIndex = 0;
+
+function loadRadios() {
+  return fetch('./assets/radios.json')
+    .then(function(res) { return res.json(); })
+    .then(function(data) {
+      radios = data.filter(function(r) { return r.status === 'confirmed'; });
+    });
+}
 var currentRadioId;
 
 // Visuals variables
@@ -281,26 +172,28 @@ function setupVisuals() {
 
 // TODO: DESCRIPTION TO DEFINE
 function setupAudio() {
-  //console.log("setupAudio()");
+  loadRadios().then(function() {
+    //console.log("setupAudio()");
 
-  //audioElement.autoplay = true;
-  audioElement.preload = true;
-  //audioElement.crossOrigin = "anonymous";
+    //audioElement.autoplay = true;
+    audioElement.preload = true;
+    //audioElement.crossOrigin = "anonymous";
 
-  audioContext = new (window.AudioContext || window.webkitAudioContext)();
-  audioAnalyser = audioContext.createAnalyser();
-  audioAnalyser.fftSize = fftSize;
-  audioAnalyser.smoothingTimeConstant = smoothingTimeConstant;
-  audioGain = audioContext.createGain();
+    audioContext = new (window.AudioContext || window.webkitAudioContext)();
+    audioAnalyser = audioContext.createAnalyser();
+    audioAnalyser.fftSize = fftSize;
+    audioAnalyser.smoothingTimeConstant = smoothingTimeConstant;
+    audioGain = audioContext.createGain();
 
-  // Connect the source, analyser and the output together
-  radioSource = audioContext.createMediaElementSource(audioElement);
-  radioSource.connect(audioAnalyser);
-  audioAnalyser.connect(audioGain);
-  audioGain.connect(audioContext.destination);
+    // Connect the source, analyser and the output together
+    radioSource = audioContext.createMediaElementSource(audioElement);
+    radioSource.connect(audioAnalyser);
+    audioAnalyser.connect(audioGain);
+    audioGain.connect(audioContext.destination);
 
-  // We good to go, yo, let's trif!
-  audioSetup = true;
+    // We good to go, yo, let's trif!
+    audioSetup = true;
+  });
 }
 
 // TODO 1: DESCRIPTION TO DEFINE
@@ -376,37 +269,38 @@ window.addEventListener("popstate", function (event) {
 function setPlayingRadio(radioId, play) {
   //console.log("setPlayingRadio(" + radioId + " - " + play + ")");
 
-  // Test if ID is bigger than the size of the table.
-  // If so go back to the first one
-  if (radioId < 0) {
-    currentRadioId = radios.length - 1;
+  // Find the radio by ID
+  var radio = radios.find(function(r) { return r.id === radioId; });
+  if (!radio) {
+    currentRadioIndex = 0;
+    radio = radios[0];
   } else {
-    currentRadioId = radioId % radios.length;
+    currentRadioIndex = radios.indexOf(radio);
   }
-  //console.log("setPlayingRadio() - New currentRadioId is: " + currentRadioId);
+  //console.log("setPlayingRadio() - New currentRadioIndex is: " + currentRadioIndex);
 
   // Change URL by pushing a new state (only if different from the current one)
   // XXX: This code should go in handleRouting() asap with just a replacestate
   // here eventually
   var currentHistoryState = history.state;
-  var newHistoryState = { radio: radios[currentRadioId].encodedName };
+  var newHistoryState = { radio: radios[currentRadioIndex].encodedName };
   //console.log("setPlayingRadio() - Current history state: " + JSON.stringify(currentHistoryState));
   //console.log("setPlayingRadio() - New history state: " + JSON.stringify(newHistoryState));
   //console.log("setPlayingRadio() - Current history state == New history state? " + (JSON.stringify(currentHistoryState) == JSON.stringify(newHistoryState)));
   if (JSON.stringify(currentHistoryState) != JSON.stringify(newHistoryState)) {
-    history.pushState(newHistoryState, "Listening to " + radios[currentRadioId].name + " - TRIF", "#/radio/" + radios[currentRadioId].encodedName);
+    history.pushState(newHistoryState, "Listening to " + radios[currentRadioIndex].name + " - TRIF", "#/radio/" + radios[currentRadioIndex].encodedName);
   }
 
   // Change audio source and replace radio label + external URL
   // XXX: Music plays while we load, ok for now... Not like that on mobile obviously
-  audioElement.src = radios[currentRadioId].stream;
+  audioElement.src = radios[currentRadioIndex].stream;
   if (audioSetup) audioElement.play();
-  nowPlayingElement.href = radios[currentRadioId].url;
-  nowPlayingElement.innerHTML = radios[currentRadioId].name;
+  nowPlayingElement.href = radios[currentRadioIndex].url;
+  nowPlayingElement.innerHTML = radios[currentRadioIndex].name;
 
   //console.log(radioSource);
 
-  loadVisuals(radios[currentRadioId].effect);
+  loadVisuals(radios[currentRadioIndex].effect);
 }
 
 // Load given visuals
@@ -420,15 +314,15 @@ function loadVisuals(effectId) {
 
   // At which level is the effect going to react
   if (!isInputAudioActive) {
-    currentIntensityLevel1 = radios[currentRadioId].levels[0];
-    currentIntensityLevel2 = radios[currentRadioId].levels[1]
-      + radios[currentRadioId].levelAdjustment;
-    currentIntensityLevel2Alt = radios[currentRadioId].levels[2]
-      + radios[currentRadioId].levelAdjustment;
-    currentIntensityLevel3 = radios[currentRadioId].levels[3]
-      + radios[currentRadioId].levelAdjustment;
-    currentIntensityLevel3Alt = radios[currentRadioId].levels[4]
-      + radios[currentRadioId].levelAdjustment;
+    currentIntensityLevel1 = radios[currentRadioIndex].levels[0];
+    currentIntensityLevel2 = radios[currentRadioIndex].levels[1]
+      + radios[currentRadioIndex].levelAdjustment;
+    currentIntensityLevel2Alt = radios[currentRadioIndex].levels[2]
+      + radios[currentRadioIndex].levelAdjustment;
+    currentIntensityLevel3 = radios[currentRadioIndex].levels[3]
+      + radios[currentRadioIndex].levelAdjustment;
+    currentIntensityLevel3Alt = radios[currentRadioIndex].levels[4]
+      + radios[currentRadioIndex].levelAdjustment;
   } else {
     currentIntensityLevel1 = defaultIntensityLevels[0];
     currentIntensityLevel2 = defaultIntensityLevels[1];
@@ -534,7 +428,8 @@ key('right', function () {
 function nextRadio() {
   //console.log("nextRadio()");
 
-  setPlayingRadio(currentRadioId + 1, false);
+  currentRadioIndex = (currentRadioIndex + 1) % radios.length;
+  setPlayingRadio(radios[currentRadioIndex].id, false);
 }
 
 // Keyboard shortcut to switch to the previous radio
@@ -546,7 +441,8 @@ key('left', function () {
 function previousRadio() {
   //console.log("previousRadio()");
 
-  setPlayingRadio(currentRadioId - 1, false);
+  currentRadioIndex = (currentRadioIndex - 1 + radios.length) % radios.length;
+  setPlayingRadio(radios[currentRadioIndex].id, false);
 }
 
 // Audio listeners and events
