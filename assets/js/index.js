@@ -65,6 +65,7 @@ var effects = [
     "color": false
   }
 ];
+var isDev = window.location.hostname === 'localhost' || window.location.port === '4000';
 var lastAverageIntensity = 0;
 var lastUpdate = 0;
 var currentEffectId;
@@ -107,6 +108,7 @@ var defaultRadioId = 0;
 var radios = [];
 var currentRadioIndex = 0;
 var currentLoader = null;
+
 
 function loadRadios() {
   return fetch('./assets/radios.json')
@@ -157,10 +159,8 @@ function init() {
     // ...if not we just party!
   } else {
     setupVisuals();
-    loadVisuals(null);
     loadRadios().then(function() {
       handleRouting();
-      setupAudio();
     });
   }
 }
@@ -176,28 +176,26 @@ function setupVisuals() {
 
 // TODO: DESCRIPTION TO DEFINE
 function setupAudio() {
-  loadRadios().then(function() {
-    //console.log("setupAudio()");
+  //console.log("setupAudio()");
 
-    //audioElement.autoplay = true;
-    audioElement.preload = true;
-    //audioElement.crossOrigin = "anonymous";
+  //audioElement.autoplay = true;
+  audioElement.preload = true;
+  audioElement.crossOrigin = "anonymous";
 
-    audioContext = new (window.AudioContext || window.webkitAudioContext)();
-    audioAnalyser = audioContext.createAnalyser();
-    audioAnalyser.fftSize = fftSize;
-    audioAnalyser.smoothingTimeConstant = smoothingTimeConstant;
-    audioGain = audioContext.createGain();
+  audioContext = new (window.AudioContext || window.webkitAudioContext)();
+  audioAnalyser = audioContext.createAnalyser();
+  audioAnalyser.fftSize = fftSize;
+  audioAnalyser.smoothingTimeConstant = smoothingTimeConstant;
+  audioGain = audioContext.createGain();
 
-    // Connect the source, analyser and the output together
-    radioSource = audioContext.createMediaElementSource(audioElement);
-    radioSource.connect(audioAnalyser);
-    audioAnalyser.connect(audioGain);
-    audioGain.connect(audioContext.destination);
+  // Connect the source, analyser and the output together
+  radioSource = audioContext.createMediaElementSource(audioElement);
+  radioSource.connect(audioAnalyser);
+  audioAnalyser.connect(audioGain);
+  audioGain.connect(audioContext.destination);
 
-    // We good to go, yo, let's trif!
-    audioSetup = true;
-  });
+  // We good to go, yo, let's trif!
+  audioSetup = true;
 }
 
 // TODO 1: DESCRIPTION TO DEFINE
@@ -281,6 +279,8 @@ function setPlayingRadio(radioId, play) {
   } else {
     currentRadioIndex = radios.indexOf(radio);
   }
+  // Reset color to the effect's color when changing radio
+  hasCurrentEffectColor = effects[radios[currentRadioIndex].effect].color;
   //console.log("setPlayingRadio() - New currentRadioIndex is: " + currentRadioIndex);
 
   // Change URL by pushing a new state (only if different from the current one)
@@ -309,7 +309,9 @@ function setPlayingRadio(radioId, play) {
 
 // Load given visuals
 function loadVisuals(effectId) {
-  //console.log("loadVisuals(" + effectId + ")");
+  if (isDev) {
+    console.log("Loading visuals for effectId:", effectId);
+  }
 
   // Stop any previous loader to prevent interruptions
   if (currentLoader && typeof currentLoader.stop === 'function') {
@@ -321,65 +323,40 @@ function loadVisuals(effectId) {
   var baseVisualAssetsUrl;
   var currentVisualAssetId = 0;
 
-  if (effectId === null) {
-    // Load default visuals (no intensity)
-    currentEffectId = -1;
-    hasCurrentEffectColor = false;
-    currentEffectTreatment = "default";
-    baseVisualAssetsUrl = window.location.origin + "/assets/gifs/";
-    // Set default intensity levels
+  // Grabbing info about the effect associated with that radio
+  currentEffectId = effectId;
+  hasCurrentEffectColor = effects[currentEffectId].color;
+  currentEffectTreatment = effects[currentEffectId].treatment;
+  baseVisualAssetsUrl = effects[currentEffectId].assetsPath;
+
+  // At which level is the effect going to react
+  if (!isInputAudioActive) {
+    currentIntensityLevel1 = radios[currentRadioIndex].levels[0];
+    currentIntensityLevel2 = radios[currentRadioIndex].levels[1]
+      + radios[currentRadioIndex].levelAdjustment;
+    currentIntensityLevel2Alt = radios[currentRadioIndex].levels[2]
+      + radios[currentRadioIndex].levelAdjustment;
+    currentIntensityLevel3 = radios[currentRadioIndex].levels[3]
+      + radios[currentRadioIndex].levelAdjustment;
+    currentIntensityLevel3Alt = radios[currentRadioIndex].levels[4]
+      + radios[currentRadioIndex].levelAdjustment;
+  } else {
     currentIntensityLevel1 = defaultIntensityLevels[0];
     currentIntensityLevel2 = defaultIntensityLevels[1];
     currentIntensityLevel2Alt = defaultIntensityLevels[2];
     currentIntensityLevel3 = defaultIntensityLevels[3];
     currentIntensityLevel3Alt = defaultIntensityLevels[4];
+  }
 
-    // Add all visual assets needed for default to the loading queue
+  // Add all visual assets needed for that radio to the loading queue
 
-    // Load all default gifs
-    for (var j = 0; j < gifsForNoIntensity.length; j++) {
-      tmpVisualAsset = new PxLoaderImage(baseVisualAssetsUrl + gifsForNoIntensity[j] + ".gif");
+  // Load all gifs for the given effect
+  for (var i = 0; i < effects[currentEffectId].gifs.length; i++) {
+    for (var j = 0; j < effects[currentEffectId].gifs[i].length; j++) {
+      tmpVisualAsset = new PxLoaderImage(baseVisualAssetsUrl + effects[currentEffectId].gifs[i][j] + ".gif");
       tmpVisualAsset.imageNumber = ++currentVisualAssetId;
       visualAssetsLoader.add(tmpVisualAsset);
-      //console.log("Preparing image#" + currentVisualAssetId + " (" + baseVisualAssetsUrl + gifsForNoIntensity[j] + ".gif) for loading");
-    }
-  } else {
-    // Grabbing info about the effect associated with that radio
-    currentEffectId = effectId;
-    hasCurrentEffectColor = effects[currentEffectId].color;
-    currentEffectTreatment = effects[currentEffectId].treatment;
-    baseVisualAssetsUrl = effects[currentEffectId].assetsPath;
-    gifsToLoad = effects[currentEffectId].gifs;
-
-    // At which level is the effect going to react
-    if (!isInputAudioActive) {
-      currentIntensityLevel1 = radios[currentRadioIndex].levels[0];
-      currentIntensityLevel2 = radios[currentRadioIndex].levels[1]
-        + radios[currentRadioIndex].levelAdjustment;
-      currentIntensityLevel2Alt = radios[currentRadioIndex].levels[2]
-        + radios[currentRadioIndex].levelAdjustment;
-      currentIntensityLevel3 = radios[currentRadioIndex].levels[3]
-        + radios[currentRadioIndex].levelAdjustment;
-      currentIntensityLevel3Alt = radios[currentRadioIndex].levels[4]
-        + radios[currentRadioIndex].levelAdjustment;
-    } else {
-      currentIntensityLevel1 = defaultIntensityLevels[0];
-      currentIntensityLevel2 = defaultIntensityLevels[1];
-      currentIntensityLevel2Alt = defaultIntensityLevels[2];
-      currentIntensityLevel3 = defaultIntensityLevels[3];
-      currentIntensityLevel3Alt = defaultIntensityLevels[4];
-    }
-
-    // Add all visual assets needed for that radio to the loading queue
-
-    // Load all gifs for the given effect
-    for (var i = 0; i < effects[currentEffectId].gifs.length; i++) {
-      for (j = 0; j < effects[currentEffectId].gifs[i].length; j++) {
-        tmpVisualAsset = new PxLoaderImage(baseVisualAssetsUrl + effects[currentEffectId].gifs[i][j] + ".gif");
-        tmpVisualAsset.imageNumber = ++currentVisualAssetId;
-        visualAssetsLoader.add(tmpVisualAsset);
-        //console.log("Preparing image#" + currentVisualAssetId + " (" + baseVisualAssetsUrl + effects[currentEffectId].gifs[i][j] + ".gif) for loading");
-      }
+      //console.log("Preparing image#" + currentVisualAssetId + " (" + baseVisualAssetsUrl + effects[currentEffectId].gifs[i][j] + ".gif) for loading");
     }
   }
 
@@ -442,6 +419,9 @@ function playRadio() {
   //console.log("playRadio()");
 
   if (!audioSetup) setupAudio();
+  if (audioContext.state === 'suspended') {
+    audioContext.resume();
+  }
   audioElement.play();
 }
 
@@ -450,7 +430,6 @@ function pauseRadio() {
 
   if (!audioSetup) setupAudio();
   audioElement.pause();
-  loadVisuals(null);
 }
 
 // Button click & keyboard shortcut to switch to the next radio
@@ -667,37 +646,18 @@ key('r', function () {
 });
 
 function randomizeVisuals() {
-  //console.log("randomizeVisuals()");
+  if (isDev) {
+    console.log("randomizeVisuals()");
+  }
 
-  //console.log("Randomizing visuals for effectId:", currentEffectId);
+  // Which gifs to display
+  currentGifForNoIntensity = effects[currentEffectId].gifs[0][Math.floor(Math.random() * effects[currentEffectId].gifs[0].length)];
+  currentGifForIntensityLevel1 = effects[currentEffectId].gifs[1][Math.floor(Math.random() * effects[currentEffectId].gifs[1].length)];
+  currentGifForIntensityLevel2 = effects[currentEffectId].gifs[2][Math.floor(Math.random() * effects[currentEffectId].gifs[2].length)];
+  currentGifForIntensityLevel3 = effects[currentEffectId].gifs[3][Math.floor(Math.random() * effects[currentEffectId].gifs[3].length)];
 
-  if (currentEffectId === -1) {
-    if (!radios || !radios[currentRadioIndex]) {
-      // Radios not loaded or invalid index
-      return;
-    }
-    // Default visuals: only no intensity, random from gifsForNoIntensity
-    currentGifForNoIntensity = gifsForNoIntensity[Math.floor(Math.random() * gifsForNoIntensity.length)];
-    currentGifForIntensityLevel1 = currentGifForNoIntensity;
-    currentGifForIntensityLevel2 = currentGifForNoIntensity;
-    currentGifForIntensityLevel3 = currentGifForNoIntensity;
-
-    // Match color setting of the current radio's effect
-    hasCurrentEffectColor = effects[radios[currentRadioIndex].effect].color;
-
-    //console.log("Set default GIFs to:", currentGifForNoIntensity, "color:", hasCurrentEffectColor);
-  } else {
-    // Which gifs to display
-    if (!effects || !effects[currentEffectId]) {
-      // Effects not loaded or invalid effectId
-      return;
-    }
-    currentGifForNoIntensity = effects[currentEffectId].gifs[0][Math.floor(Math.random() * effects[currentEffectId].gifs[0].length)];
-    currentGifForIntensityLevel1 = effects[currentEffectId].gifs[1][Math.floor(Math.random() * effects[currentEffectId].gifs[1].length)];
-    currentGifForIntensityLevel2 = effects[currentEffectId].gifs[2][Math.floor(Math.random() * effects[currentEffectId].gifs[2].length)];
-    currentGifForIntensityLevel3 = effects[currentEffectId].gifs[3][Math.floor(Math.random() * effects[currentEffectId].gifs[3].length)];
-
-    //console.log("Set effect GIFs: noIntensity=", currentGifForNoIntensity, "level1=", currentGifForIntensityLevel1);
+  if (isDev) {
+    console.log("Set effect GIFs: noIntensity=", currentGifForNoIntensity, "level1=", currentGifForIntensityLevel1);
   }
 
   // Calling back this same function in a randomized number calculated based on
@@ -712,6 +672,7 @@ function randomizeVisuals() {
 key('c', function () {
   //mixpanel.track("Press 'c' key");
   hasCurrentEffectColor = !hasCurrentEffectColor;
+  updateVisuals(); // Force update to apply color change
 });
 
 // Draw the visuals
@@ -889,7 +850,9 @@ function toggleHelpPanel() {
   if (body.classList.contains("help")) {
     hideHelpPanel();
   } else {
-    console.log("Help panel toggled");
+    if (isDev) {
+      console.log("Help panel toggled");
+    }
     body.classList.add("help");
     overlay.style.display = "block";
   }

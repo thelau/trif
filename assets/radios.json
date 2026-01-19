@@ -1,17 +1,6 @@
 [
   {
     "id": 0,
-    "name": "Traxx.FM Tech-Minimal",
-    "encodedName": "traxx-fm-tech-minimal",
-    "url": "http://www.traxx.fm/",
-    "stream": "https://traxx020.ice.infomaniak.ch/traxx020-low.mp3",
-    "effect": 0,
-    "levels": [0, 100, 127.5, 140, 155],
-    "levelAdjustment": 27,
-    "status": "confirmed"
-  },
-  {
-    "id": 1,
     "name": "BOM Psytrance Radio",
     "encodedName": "bom-psytrance-radio",
     "url": "http://www.1.fm/",
