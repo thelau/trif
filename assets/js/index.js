@@ -308,7 +308,7 @@ function setPlayingRadio(radioId, play) {
 
 // Load given visuals
 function loadVisuals(effectId) {
-  //console.log("loadVisuals(" + effectId + ")");
+  console.log("loadVisuals(" + effectId + ")");
 
   var visualAssetsLoader = new PxLoader();
   var baseVisualAssetsUrl;
@@ -392,7 +392,7 @@ function loadVisuals(effectId) {
 
   // Once visual assets have been loaded, we can setup the magic!
   visualAssetsLoader.addCompletionListener(function () {
-    //console.log("visualAssetsLoader.addCompletionListener() - Loading of assets complete");
+    console.log("visualAssetsLoader.addCompletionListener() - Loading of assets complete for effectId:", currentEffectId);
 
     loadingElement.style.display = "none";
     loadingVisuals = false;
@@ -659,7 +659,9 @@ key('r', function () {
 });
 
 function randomizeVisuals() {
-  //console.log("randomizeVisuals()");
+  console.log("randomizeVisuals()");
+
+  console.log("Randomizing visuals for effectId:", currentEffectId);
 
   if (currentEffectId === -1) {
     // Default visuals: only no intensity, random from gifsForNoIntensity
@@ -667,12 +669,16 @@ function randomizeVisuals() {
     currentGifForIntensityLevel1 = currentGifForNoIntensity;
     currentGifForIntensityLevel2 = currentGifForNoIntensity;
     currentGifForIntensityLevel3 = currentGifForNoIntensity;
+
+    console.log("Set default GIFs to:", currentGifForNoIntensity);
   } else {
     // Which gifs to display
     currentGifForNoIntensity = effects[currentEffectId].gifs[0][Math.floor(Math.random() * effects[currentEffectId].gifs[0].length)];
     currentGifForIntensityLevel1 = effects[currentEffectId].gifs[1][Math.floor(Math.random() * effects[currentEffectId].gifs[1].length)];
     currentGifForIntensityLevel2 = effects[currentEffectId].gifs[2][Math.floor(Math.random() * effects[currentEffectId].gifs[2].length)];
     currentGifForIntensityLevel3 = effects[currentEffectId].gifs[3][Math.floor(Math.random() * effects[currentEffectId].gifs[3].length)];
+
+    console.log("Set effect GIFs: noIntensity=", currentGifForNoIntensity, "level1=", currentGifForIntensityLevel1);
   }
 
   // Calling back this same function in a randomized number calculated based on
@@ -738,7 +744,7 @@ function updateVisuals() {
 
   // If visuals are still loading, we do not start displaying with the visuals
   if (loadingVisuals) return;
-  //console.log("updateVisuals(): Visuals loaded");
+  console.log("updateVisuals(): Visuals loaded, averageIntensity:", averageIntensity);
 
   // Current gif reaction is based on intensity.
   // Probably the wrong way to do it but that works for now.
@@ -776,8 +782,10 @@ function updateVisuals() {
 
   } else {
     visualsElement.className = currentEffectTreatment
-      + ((hasCurrentEffectColor) ? "-color" : "")
-      + " gif-" + currentGifForNoIntensity;
+       + ((hasCurrentEffectColor) ? "-color" : "")
+       + " gif-" + currentGifForNoIntensity;
+
+    console.log("Setting default visual className:", visualsElement.className, "gif:", currentGifForNoIntensity);
   }
 }
 
