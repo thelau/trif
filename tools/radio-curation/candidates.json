@@ -1,0 +1,22 @@
+[
+  {
+    "name": "Underground Techno",
+    "stream": "https://example.com/undergroundtechno.mp3",
+    "key": "undergroundtechno"
+  },
+  {
+    "name": "Hard Techno",
+    "stream": "https://example.com/hardtechno.mp3",
+    "key": "hardtechno"
+  },
+  {
+    "name": "Jungle",
+    "stream": "https://example.com/jungle.mp3",
+    "key": "jungle"
+  },
+  {
+    "name": "Drum & Bass",
+    "stream": "https://example.com/dnb.mp3",
+    "key": "neurofunk"
+  }
+]

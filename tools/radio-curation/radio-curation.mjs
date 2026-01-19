@@ -1,17 +1,21 @@
-var exec = require('child_process').exec;
-var fs = require('fs');
-var path = require('path');
+import { exec } from 'child_process';
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
 
-var outputFile = path.join(__dirname, 'candidates.json');
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+const outputFile = path.join(__dirname, 'candidates.json');
 
 // Underground genres to filter
-var genres = ['undergroundtechno', 'hardtechno', 'jungle', 'neurofunk'];
+const genres = ['undergroundtechno', 'hardtechno', 'jungle', 'neurofunk'];
 
 console.log('Fetching di.fm channels...');
 
 // Fallback: hardcode some placeholder streams for now
 // TODO: Implement di.fm API call with auth
-var fallback = [
+const fallback = [
   { name: 'Underground Techno', stream: 'https://example.com/undergroundtechno.mp3', key: 'undergroundtechno' },
   { name: 'Hard Techno', stream: 'https://example.com/hardtechno.mp3', key: 'hardtechno' },
   { name: 'Jungle', stream: 'https://example.com/jungle.mp3', key: 'jungle' },

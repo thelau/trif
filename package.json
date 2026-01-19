@@ -14,6 +14,7 @@
     "lint": "eslint --config .config/.eslintrc.cjs assets/js/index.js && echo 'Skipping stylelint due to config error'",
     "lint:fix": "eslint --config .config/.eslintrc.cjs --fix assets/js/index.js && stylelint --config .config/.stylelintrc.cjs --fix assets/css/style.css",
     "test": "jest --passWithNoTests",
+    "radio-curation": "node tools/radio-curation/radio-curation.mjs",
     "clean": "rm -rf node_modules package-lock.json && npm install",
     "prepare": "husky"
   },
