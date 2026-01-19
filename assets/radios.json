@@ -51,7 +51,7 @@
     "stream": "https://stream.bigcitybeats.de/bcb-radio/mp3-192/radiobrowser",
     "effect": 1,
     "levels": [0, 120, 150, 170, 185],
-    "levelAdjustment": 0,
+    "levelAdjustment": 17.5,
     "status": "confirmed"
   },
   {
