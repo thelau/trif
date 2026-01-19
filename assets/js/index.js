@@ -661,11 +661,19 @@ key('r', function () {
 function randomizeVisuals() {
   //console.log("randomizeVisuals()");
 
-  // Which gifs to display
-  currentGifForNoIntensity = effects[currentEffectId].gifs[0][Math.floor(Math.random() * effects[currentEffectId].gifs[0].length)];
-  currentGifForIntensityLevel1 = effects[currentEffectId].gifs[1][Math.floor(Math.random() * effects[currentEffectId].gifs[1].length)];
-  currentGifForIntensityLevel2 = effects[currentEffectId].gifs[2][Math.floor(Math.random() * effects[currentEffectId].gifs[2].length)];
-  currentGifForIntensityLevel3 = effects[currentEffectId].gifs[3][Math.floor(Math.random() * effects[currentEffectId].gifs[3].length)];
+  if (currentEffectId === -1) {
+    // Default visuals: only no intensity, random from gifsForNoIntensity
+    currentGifForNoIntensity = gifsForNoIntensity[Math.floor(Math.random() * gifsForNoIntensity.length)];
+    currentGifForIntensityLevel1 = currentGifForNoIntensity;
+    currentGifForIntensityLevel2 = currentGifForNoIntensity;
+    currentGifForIntensityLevel3 = currentGifForNoIntensity;
+  } else {
+    // Which gifs to display
+    currentGifForNoIntensity = effects[currentEffectId].gifs[0][Math.floor(Math.random() * effects[currentEffectId].gifs[0].length)];
+    currentGifForIntensityLevel1 = effects[currentEffectId].gifs[1][Math.floor(Math.random() * effects[currentEffectId].gifs[1].length)];
+    currentGifForIntensityLevel2 = effects[currentEffectId].gifs[2][Math.floor(Math.random() * effects[currentEffectId].gifs[2].length)];
+    currentGifForIntensityLevel3 = effects[currentEffectId].gifs[3][Math.floor(Math.random() * effects[currentEffectId].gifs[3].length)];
+  }
 
   // Calling back this same function in a randomized number calculated based on
   // the pre-defined interval of time and 10% of that time (very shitty technique for now)
