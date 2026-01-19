@@ -312,7 +312,7 @@ function loadVisuals(effectId) {
   //console.log("loadVisuals(" + effectId + ")");
 
   // Stop any previous loader to prevent interruptions
-  if (currentLoader) {
+  if (currentLoader && typeof currentLoader.stop === 'function') {
     currentLoader.stop();
   }
 
@@ -672,6 +672,10 @@ function randomizeVisuals() {
   //console.log("Randomizing visuals for effectId:", currentEffectId);
 
   if (currentEffectId === -1) {
+    if (!radios || !radios[currentRadioIndex]) {
+      // Radios not loaded or invalid index
+      return;
+    }
     // Default visuals: only no intensity, random from gifsForNoIntensity
     currentGifForNoIntensity = gifsForNoIntensity[Math.floor(Math.random() * gifsForNoIntensity.length)];
     currentGifForIntensityLevel1 = currentGifForNoIntensity;
@@ -684,6 +688,10 @@ function randomizeVisuals() {
     //console.log("Set default GIFs to:", currentGifForNoIntensity, "color:", hasCurrentEffectColor);
   } else {
     // Which gifs to display
+    if (!effects || !effects[currentEffectId]) {
+      // Effects not loaded or invalid effectId
+      return;
+    }
     currentGifForNoIntensity = effects[currentEffectId].gifs[0][Math.floor(Math.random() * effects[currentEffectId].gifs[0].length)];
     currentGifForIntensityLevel1 = effects[currentEffectId].gifs[1][Math.floor(Math.random() * effects[currentEffectId].gifs[1].length)];
     currentGifForIntensityLevel2 = effects[currentEffectId].gifs[2][Math.floor(Math.random() * effects[currentEffectId].gifs[2].length)];
