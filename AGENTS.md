@@ -25,8 +25,22 @@ npm run clean
 - Do not push code to the main branch until confirmed working locally.
 - If working in a feature branch, you can add, commit, and push under that branch for PR review.
 
+## Completed
+- Performance optimizations (throttling, CSS hints, Lighthouse audits)
+- Enhanced UX (help panel with keyboard shortcuts)
+- Code quality (ESLint, Stylelint, Jest, Husky, CI/CD)
+- Mobile support (Web Audio API detection)
+- Deployment automation (S3/CloudFront)
+- Radio management (JSON extraction, status, index-based navigation, default visuals)
+
 ## Backlog
-- Figure out proper logging system (low priority).
+- Add new radio streams (4 more for variety)
+- Create radio test page for dev testing
+- PWA features (service worker, manifest)
+- Accessibility improvements (ARIA labels)
+- Customization/Themes
+- Mobile enhancements
+- Figure out proper logging system (low priority)
 
 ## Code Style
 
