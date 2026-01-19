@@ -680,11 +680,11 @@ function updateVisuals() {
   //console.log("updateVisuals()");
 
   // Throttle to ~30fps to reduce CPU load
-  if (Date.now() - lastUpdate < 33) {
-    requestAnimationFrame(updateVisuals);
-    return;
-  }
-  lastUpdate = Date.now();
+  // if (Date.now() - lastUpdate < 33) {
+  //   requestAnimationFrame(updateVisuals);
+  //   return;
+  // }
+  // lastUpdate = Date.now();
 
   requestAnimationFrame(updateVisuals);
 
@@ -706,11 +706,11 @@ function updateVisuals() {
     //console.log("updateVisuals() - Average intensity: " + averageIntensity);
 
     // Optimize: Skip DOM update if intensity unchanged
-    if (averageIntensity === lastAverageIntensity) {
-      requestAnimationFrame(updateVisuals);
-      return;
-    }
-    lastAverageIntensity = averageIntensity;
+    // if (averageIntensity === lastAverageIntensity) {
+    //   requestAnimationFrame(updateVisuals);
+    //   return;
+    // }
+    // lastAverageIntensity = averageIntensity;
     /*console.log("updateVisuals()"
       + " - Intensity: " + averageIntensity
       + " - Reactive levels: ["
