@@ -45,17 +45,6 @@
   },
   {
     "id": 4,
-    "name": "#100 BEST IBIZA DEEP HOUSE",
-    "encodedName": "100-best-ibiza-deep-house",
-    "url": "https://www.di.fm/",
-    "stream": "https://listen.di.fm/public3/deephouse.mp3",
-    "effect": 1,
-    "levels": [0, 120, 150, 170, 185],
-    "levelAdjustment": 0,
-    "status": "confirmed"
-  },
-  {
-    "id": 5,
     "name": "L-radio",
     "encodedName": "l-radio",
     "url": "https://l-radio.net/",
@@ -66,7 +55,7 @@
     "status": "confirmed"
   },
   {
-    "id": 6,
+    "id": 5,
     "name": "__BIGCITYBEATS.FM__ by rautemusik (rm.fm)",
     "encodedName": "bigcitybeats-fm-by-rautemusik-rm-fm",
     "url": "https://rautemusik.fm/",
@@ -77,7 +66,7 @@
     "status": "confirmed"
   },
   {
-    "id": 7,
+    "id": 6,
     "name": "__TECHHOUSE__ by rautemusik (rm.fm)",
     "encodedName": "techhouse-by-rautemusik-rm-fm",
     "url": "https://rautemusik.fm/",
