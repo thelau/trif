@@ -103,8 +103,7 @@ var inputAudioStream;
 var isInputAudioActive = false;
 
 // Radios to play
-
-var defaultRadioId = 0;
+var defaultRadioId = 2;
 var radios = [];
 var currentRadioIndex = 0;
 var currentLoader = null;
@@ -606,14 +605,14 @@ key('i', function () {
 });
 
 // =/- to adjust intensity level detection
-key('=', function(){
+key('=', function() {
   //mixpanel.track("Press '=' key");
   intensityLevelAdjustment += 0.5;
   if (isDev) {
     console.log("Intensity level adjustment increased to:", intensityLevelAdjustment);
   }
 });
-key('-', function(){
+key('-', function() {
   //mixpanel.track("Press '-' key");
   intensityLevelAdjustment -= 0.5;
   if (isDev) {

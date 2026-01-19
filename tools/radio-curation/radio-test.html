@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Radio Test Page</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    .station { margin: 10px 0; }
+    button { margin: 5px; padding: 10px; }
+  </style>
+</head>
+<body>
+  <h1>Radio Test Page</h1>
+  <div id="candidates-list"></div>
+
+  <audio id="audio-player" controls style="display:none;"></audio>
+
+  <script>
+    let candidates = [];
+    let currentAudio = null;
+
+    async function loadCandidates() {
+      try {
+        const response = await fetch('./candidates.json');
+        const allCandidates = await response.json();
+        candidates = allCandidates; // Show all
+        renderCandidates();
+      } catch (error) {
+        console.error('Error loading candidates:', error);
+      }
+    }
+
+    function renderCandidates() {
+      const list = document.getElementById('candidates-list');
+      list.innerHTML = candidates.map(candidate => `
+        <div class="station">
+          <strong>${candidate.name}</strong> (${candidate.key || 'N/A'})
+          <button onclick="togglePlay('${candidate.stream}', this)">Play/Pause</button>
+        </div>
+      `).join('');
+    }
+
+    function togglePlay(stream, button) {
+      const audio = document.getElementById('audio-player');
+      if (audio.src !== stream) {
+        audio.src = stream;
+        audio.crossOrigin = 'anonymous';
+        audio.play();
+        currentAudio = stream;
+        console.log('Playing:', stream);
+        button.textContent = 'Pause';
+      } else if (audio.paused) {
+        audio.play();
+        console.log('Resumed:', stream);
+        button.textContent = 'Pause';
+      } else {
+        audio.pause();
+        console.log('Paused:', stream);
+        button.textContent = 'Play/Pause';
+      }
+    }
+
+    // Load initial data
+    loadCandidates();
+  </script>
+</body>
+</html>
