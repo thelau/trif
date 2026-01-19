@@ -156,6 +156,7 @@ function init() {
     // ...if not we just party!
   } else {
     setupVisuals();
+    loadVisuals(null);
     loadRadios().then(function() {
       handleRouting();
       setupAudio();
@@ -309,46 +310,73 @@ function setPlayingRadio(radioId, play) {
 function loadVisuals(effectId) {
   //console.log("loadVisuals(" + effectId + ")");
 
-  // Grabbing info about the effect associated with that radio
-  currentEffectId = effectId;
-  hasCurrentEffectColor = effects[currentEffectId].color;
-  currentEffectTreatment = effects[currentEffectId].treatment;
+  var visualAssetsLoader = new PxLoader();
+  var baseVisualAssetsUrl;
+  var currentVisualAssetId = 0;
 
-  // At which level is the effect going to react
-  if (!isInputAudioActive) {
-    currentIntensityLevel1 = radios[currentRadioIndex].levels[0];
-    currentIntensityLevel2 = radios[currentRadioIndex].levels[1]
-      + radios[currentRadioIndex].levelAdjustment;
-    currentIntensityLevel2Alt = radios[currentRadioIndex].levels[2]
-      + radios[currentRadioIndex].levelAdjustment;
-    currentIntensityLevel3 = radios[currentRadioIndex].levels[3]
-      + radios[currentRadioIndex].levelAdjustment;
-    currentIntensityLevel3Alt = radios[currentRadioIndex].levels[4]
-      + radios[currentRadioIndex].levelAdjustment;
-  } else {
+  if (effectId === null) {
+    // Load default visuals (no intensity)
+    currentEffectId = -1;
+    hasCurrentEffectColor = false;
+    currentEffectTreatment = "default";
+    baseVisualAssetsUrl = window.location.origin + "/assets/gifs/";
+    // Set default intensity levels
     currentIntensityLevel1 = defaultIntensityLevels[0];
     currentIntensityLevel2 = defaultIntensityLevels[1];
     currentIntensityLevel2Alt = defaultIntensityLevels[2];
     currentIntensityLevel3 = defaultIntensityLevels[3];
     currentIntensityLevel3Alt = defaultIntensityLevels[4];
-  }
 
-  // Preloading visual assets for the radio effect
-  var visualAssetsLoader = new PxLoader();
-  var baseVisualAssetsUrl = effects[currentEffectId].assetsPath;
+    // Add all visual assets needed for default to the loading queue
 
-  // Add all visual assets needed for that radio to the loading queue
-  var currentVisualAssetId = 0;
-
-  // Load all gifs for the given effect
-  for (var i = 0; i < effects[currentEffectId].gifs.length; i++) {
-    for (var j = 0; j < effects[currentEffectId].gifs[i].length; j++) {
-      var tmpVisualAsset = new PxLoaderImage(baseVisualAssetsUrl + effects[currentEffectId].gifs[i][j] + ".gif");
+    // Load all default gifs
+    for (var j = 0; j < gifsForNoIntensity.length; j++) {
+      tmpVisualAsset = new PxLoaderImage(baseVisualAssetsUrl + gifsForNoIntensity[j] + ".gif");
       tmpVisualAsset.imageNumber = ++currentVisualAssetId;
       visualAssetsLoader.add(tmpVisualAsset);
-      //console.log("Preparing image#" + currentVisualAssetId + " (" + baseVisualAssetsUrl + effects[currentEffectId].gifs[i][j] + ".gif) for loading");
+      //console.log("Preparing image#" + currentVisualAssetId + " (" + baseVisualAssetsUrl + gifsForNoIntensity[j] + ".gif) for loading");
+    }
+  } else {
+    // Grabbing info about the effect associated with that radio
+    currentEffectId = effectId;
+    hasCurrentEffectColor = effects[currentEffectId].color;
+    currentEffectTreatment = effects[currentEffectId].treatment;
+    baseVisualAssetsUrl = effects[currentEffectId].assetsPath;
+    gifsToLoad = effects[currentEffectId].gifs;
+
+    // At which level is the effect going to react
+    if (!isInputAudioActive) {
+      currentIntensityLevel1 = radios[currentRadioIndex].levels[0];
+      currentIntensityLevel2 = radios[currentRadioIndex].levels[1]
+        + radios[currentRadioIndex].levelAdjustment;
+      currentIntensityLevel2Alt = radios[currentRadioIndex].levels[2]
+        + radios[currentRadioIndex].levelAdjustment;
+      currentIntensityLevel3 = radios[currentRadioIndex].levels[3]
+        + radios[currentRadioIndex].levelAdjustment;
+      currentIntensityLevel3Alt = radios[currentRadioIndex].levels[4]
+        + radios[currentRadioIndex].levelAdjustment;
+    } else {
+      currentIntensityLevel1 = defaultIntensityLevels[0];
+      currentIntensityLevel2 = defaultIntensityLevels[1];
+      currentIntensityLevel2Alt = defaultIntensityLevels[2];
+      currentIntensityLevel3 = defaultIntensityLevels[3];
+      currentIntensityLevel3Alt = defaultIntensityLevels[4];
+    }
+
+    // Add all visual assets needed for that radio to the loading queue
+
+    // Load all gifs for the given effect
+    for (var i = 0; i < effects[currentEffectId].gifs.length; i++) {
+      for (j = 0; j < effects[currentEffectId].gifs[i].length; j++) {
+        tmpVisualAsset = new PxLoaderImage(baseVisualAssetsUrl + effects[currentEffectId].gifs[i][j] + ".gif");
+        tmpVisualAsset.imageNumber = ++currentVisualAssetId;
+        visualAssetsLoader.add(tmpVisualAsset);
+        //console.log("Preparing image#" + currentVisualAssetId + " (" + baseVisualAssetsUrl + effects[currentEffectId].gifs[i][j] + ".gif) for loading");
+      }
     }
   }
+
+
 
   // Monitor visual assets when loading is in progress
   visualAssetsLoader.addProgressListener(function (e) {
@@ -414,6 +442,7 @@ function pauseRadio() {
 
   if (!audioSetup) setupAudio();
   audioElement.pause();
+  loadVisuals(null);
 }
 
 // Button click & keyboard shortcut to switch to the next radio
