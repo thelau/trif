@@ -678,7 +678,10 @@ function randomizeVisuals() {
     currentGifForIntensityLevel2 = currentGifForNoIntensity;
     currentGifForIntensityLevel3 = currentGifForNoIntensity;
 
-    console.log("Set default GIFs to:", currentGifForNoIntensity);
+    // Match color setting of the current radio's effect
+    hasCurrentEffectColor = effects[radios[currentRadioIndex].effect].color;
+
+    console.log("Set default GIFs to:", currentGifForNoIntensity, "color:", hasCurrentEffectColor);
   } else {
     // Which gifs to display
     currentGifForNoIntensity = effects[currentEffectId].gifs[0][Math.floor(Math.random() * effects[currentEffectId].gifs[0].length)];
