@@ -156,8 +156,10 @@ function init() {
     // ...if not we just party!
   } else {
     setupVisuals();
-    //setupAudio();
-    handleRouting();
+    loadRadios().then(function() {
+      handleRouting();
+      setupAudio();
+    });
   }
 }
 window.addEventListener('load', init, false);
