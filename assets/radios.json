@@ -31,5 +31,71 @@
     "levels": [0, 120, 150, 170, 185],
     "levelAdjustment": 0,
     "status": "confirmed"
+  },
+  {
+    "id": 3,
+    "name": "Techno - FM - Channel",
+    "encodedName": "techno-fm-channel",
+    "url": "https://www.di.fm/",
+    "stream": "https://listen.di.fm/public3/techno.mp3",
+    "effect": 0,
+    "levels": [0, 120, 150, 170, 185],
+    "levelAdjustment": 0,
+    "status": "confirmed"
+  },
+  {
+    "id": 4,
+    "name": "__HOUSE__ by rautemusik (rm.fm)",
+    "encodedName": "house-by-rautemusik-rm-fm",
+    "url": "https://rautemusik.fm/",
+    "stream": "https://house-high.rautemusik.fm/?ref=radiobrowser",
+    "effect": 1,
+    "levels": [0, 120, 150, 170, 185],
+    "levelAdjustment": 0,
+    "status": "confirmed"
+  },
+  {
+    "id": 5,
+    "name": "__TECHNO__ by rautemusik.fm",
+    "encodedName": "techno-by-rautemusik-fm",
+    "url": "https://rautemusik.fm/",
+    "stream": "https://techno-high.rautemusik.fm/?ref=radiobrowser",
+    "effect": 0,
+    "levels": [0, 120, 150, 170, 185],
+    "levelAdjustment": 0,
+    "status": "confirmed"
+  },
+  {
+    "id": 6,
+    "name": "#100 BEST IBIZA DEEP HOUSE",
+    "encodedName": "100-best-ibiza-deep-house",
+    "url": "https://www.di.fm/",
+    "stream": "https://listen.di.fm/public3/deephouse.mp3",
+    "effect": 1,
+    "levels": [0, 120, 150, 170, 185],
+    "levelAdjustment": 0,
+    "status": "confirmed"
+  },
+  {
+    "id": 7,
+    "name": "L-radio",
+    "encodedName": "l-radio",
+    "url": "https://l-radio.net/",
+    "stream": "https://l-radio-high.rautemusik.fm/?ref=radiobrowser",
+    "effect": 0,
+    "levels": [0, 120, 150, 170, 185],
+    "levelAdjustment": 0,
+    "status": "confirmed"
+  },
+  {
+    "id": 8,
+    "name": "__BIGCITYBEATS.FM__ by rautemusik (rm.fm)",
+    "encodedName": "bigcitybeats-fm-by-rautemusik-rm-fm",
+    "url": "https://rautemusik.fm/",
+    "stream": "https://bigcity-high.rautemusik.fm/?ref=radiobrowser",
+    "effect": 1,
+    "levels": [0, 120, 150, 170, 185],
+    "levelAdjustment": 0,
+    "status": "confirmed"
   }
 ]
