@@ -106,6 +106,7 @@ var isInputAudioActive = false;
 var defaultRadioId = 0;
 var radios = [];
 var currentRadioIndex = 0;
+var currentLoader = null;
 
 function loadRadios() {
   return fetch('./assets/radios.json')
@@ -310,7 +311,13 @@ function setPlayingRadio(radioId, play) {
 function loadVisuals(effectId) {
   console.log("loadVisuals(" + effectId + ")");
 
+  // Stop any previous loader to prevent interruptions
+  if (currentLoader) {
+    currentLoader.stop();
+  }
+
   var visualAssetsLoader = new PxLoader();
+  currentLoader = visualAssetsLoader;
   var baseVisualAssetsUrl;
   var currentVisualAssetId = 0;
 
@@ -396,6 +403,7 @@ function loadVisuals(effectId) {
 
     loadingElement.style.display = "none";
     loadingVisuals = false;
+    currentLoader = null;
 
     // Randomize visuals to display with this new radio
     randomizeVisuals();
