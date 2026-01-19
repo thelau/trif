@@ -45,17 +45,6 @@
   },
   {
     "id": 4,
-    "name": "L-radio",
-    "encodedName": "l-radio",
-    "url": "https://l-radio.net/",
-    "stream": "https://l-radio-high.rautemusik.fm/?ref=radiobrowser",
-    "effect": 0,
-    "levels": [0, 120, 150, 170, 185],
-    "levelAdjustment": 0,
-    "status": "confirmed"
-  },
-  {
-    "id": 5,
     "name": "__BIGCITYBEATS.FM__ by rautemusik (rm.fm)",
     "encodedName": "bigcitybeats-fm-by-rautemusik-rm-fm",
     "url": "https://rautemusik.fm/",
@@ -66,7 +55,7 @@
     "status": "confirmed"
   },
   {
-    "id": 6,
+    "id": 5,
     "name": "__TECHHOUSE__ by rautemusik (rm.fm)",
     "encodedName": "techhouse-by-rautemusik-rm-fm",
     "url": "https://rautemusik.fm/",
