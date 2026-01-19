@@ -24,7 +24,7 @@
       try {
         const response = await fetch('./candidates.json');
         const allCandidates = await response.json();
-        candidates = allCandidates.sort(() => 0.5 - Math.random()).slice(0, 5); // Random 5
+        candidates = allCandidates; // Show all
         renderCandidates();
       } catch (error) {
         console.error('Error loading candidates:', error);
