@@ -18,7 +18,7 @@
     "stream": "https://streams.ilovemusic.de/iloveradio17.mp3",
     "effect": 1,
     "levels": [0, 120, 150, 170, 185],
-    "levelAdjustment": 25,
+    "levelAdjustment": 15,
     "status": "confirmed"
   }
 ]
