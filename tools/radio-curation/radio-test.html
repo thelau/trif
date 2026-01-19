@@ -6,46 +6,19 @@
   <title>Radio Test Page</title>
   <style>
     body { font-family: Arial, sans-serif; margin: 20px; }
-    .tab { display: none; }
-    .tab.active { display: block; }
-    button { margin: 5px; padding: 10px; }
     .station { margin: 10px 0; }
+    button { margin: 5px; padding: 10px; }
   </style>
 </head>
 <body>
   <h1>Radio Test Page</h1>
-  <div>
-    <button onclick="showTab('trif')">TRIF Stations</button>
-    <button onclick="showTab('candidates')">Candidate Stations</button>
-  </div>
-
-  <div id="trif" class="tab active">
-    <h2>TRIF Stations</h2>
-    <div id="trif-list"></div>
-  </div>
-
-  <div id="candidates" class="tab">
-    <h2>Candidate Stations</h2>
-    <button onclick="loadCandidates()">Refresh Candidates</button>
-    <div id="candidates-list"></div>
-  </div>
+  <div id="candidates-list"></div>
 
   <audio id="audio-player" controls style="display:none;"></audio>
 
   <script>
-    let trifRadios = [];
     let candidates = [];
-    let currentTab = 'trif';
-
-    async function loadTrifRadios() {
-      try {
-        const response = await fetch('./assets/radios.json');
-        trifRadios = await response.json();
-        renderTrifRadios();
-      } catch (error) {
-        console.error('Error loading TRIF radios:', error);
-      }
-    }
+    let currentAudio = null;
 
     async function loadCandidates() {
       try {
@@ -58,62 +31,37 @@
       }
     }
 
-    function renderTrifRadios() {
-      const list = document.getElementById('trif-list');
-      list.innerHTML = trifRadios.map(radio => `
-        <div class="station">
-          <strong>${radio.name}</strong>
-          <button onclick="playRadio('${radio.stream}')">Play</button>
-          <button onclick="pauseRadio()">Pause</button>
-        </div>
-      `).join('');
-    }
-
     function renderCandidates() {
       const list = document.getElementById('candidates-list');
       list.innerHTML = candidates.map(candidate => `
         <div class="station">
           <strong>${candidate.name}</strong> (${candidate.key || 'N/A'})
-          <button onclick="playRadio('${candidate.stream}')">Play</button>
-          <button onclick="pauseRadio()">Pause</button>
-          <button onclick="approveStation('${candidate.name}', '${candidate.stream}', '${candidate.key || 'unknown'}')">Approve</button>
+          <button onclick="togglePlay('${candidate.stream}', this)">Play/Pause</button>
         </div>
       `).join('');
     }
 
-    function showTab(tabName) {
-      document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
-      document.getElementById(tabName).classList.add('active');
-      currentTab = tabName;
-    }
-
-    function playRadio(stream) {
+    function togglePlay(stream, button) {
       const audio = document.getElementById('audio-player');
-      audio.src = stream;
-      audio.crossOrigin = 'anonymous';
-      audio.play();
-      console.log('Playing:', stream);
-    }
-
-    function pauseRadio() {
-      const audio = document.getElementById('audio-player');
-      audio.pause();
-      console.log('Paused');
-    }
-
-    function approveStation(name, stream, genre) {
-      const timestamp = new Date().toISOString().replace(/[:.]/g, '-').slice(0, -5);
-      const filename = `approved-${timestamp}.json`;
-      const data = { name, stream, genre, approvedAt: new Date().toISOString() };
-
-      // For simplicity, log to console; in real app, save to file
-      console.log('Approved station:', data);
-      alert(`Approved: ${name}. Check console for details.`);
-      // TODO: Save to file via server endpoint
+      if (audio.src !== stream) {
+        audio.src = stream;
+        audio.crossOrigin = 'anonymous';
+        audio.play();
+        currentAudio = stream;
+        console.log('Playing:', stream);
+        button.textContent = 'Pause';
+      } else if (audio.paused) {
+        audio.play();
+        console.log('Resumed:', stream);
+        button.textContent = 'Pause';
+      } else {
+        audio.pause();
+        console.log('Paused:', stream);
+        button.textContent = 'Play/Pause';
+      }
     }
 
     // Load initial data
-    loadTrifRadios();
     loadCandidates();
   </script>
 </body>

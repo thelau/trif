@@ -6,7 +6,7 @@
     "url": "http://www.1.fm/",
     "stream": "http://strm112.1.fm/psytrance_mobile_mp3",
     "effect": 3,
-    "levels": [0, 100, 127.5, 140, 155],
+    "levels": [0, 120, 150, 170, 185],
     "levelAdjustment": 34,
     "status": "confirmed"
   },
@@ -19,6 +19,17 @@
     "effect": 1,
     "levels": [0, 120, 150, 170, 185],
     "levelAdjustment": 10,
+    "status": "confirmed"
+  },
+  {
+    "id": 2,
+    "name": "Club Sabroso Radio",
+    "encodedName": "club-sabroso-radio",
+    "url": "https://www.club-sabroso-radio.com/",
+    "stream": "http://s5.radio.co/s688b80b65/listen",
+    "effect": 0,
+    "levels": [0, 120, 150, 170, 185],
+    "levelAdjustment": 0,
     "status": "confirmed"
   }
 ]
