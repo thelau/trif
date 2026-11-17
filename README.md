@@ -4,6 +4,12 @@ An audio-visual experience for the browser: internet radio streams (or your micr
 
 TRIF ran at trif.it from 2014 to 2026. The site is now offline and the project is open source. It may come back online one day; until then, you can run it locally.
 
+![TRIF showing Uzic Techno Minimal in grayscale](docs/screenshots/uzic-techno.webp)
+
+![TRIF showing Bassdrive](docs/screenshots/bassdrive.webp)
+
+More screenshots and the story of the project are in my portfolio: [laurent-thevenet.com/trif](https://laurent-thevenet.com/trif).
+
 ## Run it
 
 Requires Node 18.20 or later.
@@ -54,6 +60,10 @@ The site was hosted on Amazon S3 behind CloudFront. The workflow in `.github/wor
 ## Browser support
 
 Google Chrome on desktop is the main target. Other browsers and mobile work where the Web Audio API is available.
+
+## Author
+
+Made by Laurent Thevenet. See more of my work at [laurent-thevenet.com](https://laurent-thevenet.com).
 
 ## License
 
