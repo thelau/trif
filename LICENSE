@@ -19,18 +19,3 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-
----
-
-Scope: this license applies to the TRIF source code only (HTML, CSS,
-JavaScript, tooling and configuration written for this project).
-
-It does not apply to:
-
-- The GIFs in assets/gifs/ (and their copies in dist/). They were collected
-  from around the web, remain the property of their respective owners, and
-  are included for demonstration only.
-- The radio streams listed in assets/radios.json, which belong to their
-  respective broadcasters.
-- Bundled third-party libraries in assets/js/ (keymaster.js, PxLoader,
-  vminpoly), which keep their own licenses.
