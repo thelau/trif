@@ -1,7 +1,8 @@
 name: Deploy to Prod
+# The site is offline. This workflow no longer runs on push;
+# start it by hand from the Actions tab if TRIF goes back online.
 on:
-  push:
-    branches: [ main ]
+  workflow_dispatch:
 jobs:
   deploy:
     runs-on: ubuntu-latest
